@@ -2,19 +2,19 @@ import colors from "@/styles/colors";
 import HeartIcon from "@/svg/HeartIcon";
 import Logo from "@/svg/Logo";
 import PersonIcon from "@/svg/PersonIcon";
-import { FC } from "react"
-import { styled } from "styled-components"
+import { FC } from "react";
+import { styled } from "styled-components";
 
 const TopBar: FC = () => {
   return (
     <Header>
-      <Logo/>
+      <Logo />
       <ButtonGroup>
         <IconButton>
-          <HeartIcon/>
+          <HeartIcon />
         </IconButton>
         <IconButton>
-          <PersonIcon/>
+          <PersonIcon />
         </IconButton>
       </ButtonGroup>
     </Header>
@@ -27,19 +27,19 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 1rem;
-  border-bottom: 1px solid ${colors.GRAY["01"]};
-`
+  padding-inline: 16px;
+  border-bottom: 1px solid ${colors.GRAY[1]};
+`;
 
 const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
-  padding-block: 1rem;
+  padding-block: 16px;
 
   button:first-child {
-    margin-right: 0.75rem;
+    margin-right: 12px;
   }
-`
+`;
 const IconButton = styled.button`
   background-color: transparent;
   border: none;
@@ -47,7 +47,7 @@ const IconButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-`
+`;
