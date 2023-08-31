@@ -49,6 +49,21 @@ export const fonts = {
     weight: 400,
     height: "24px",
   },
+  H5_BOLD: {
+    size: "15px",
+    weight: 700,
+    height: "19px",
+  },
+  H5_SEMIBOLD: {
+    size: "15px",
+    weight: 600,
+    height: "19px",
+  },
+  H5_REGULAR: {
+    size: "15px",
+    weight: 400,
+    height: "19px",
+  },
   BODY1_BOLD: {
     size: "15px",
     weight: 700,
