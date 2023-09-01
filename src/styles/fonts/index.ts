@@ -124,15 +124,35 @@ export const fonts = {
     weight: 400,
     height: "11px",
   },
-  CAPTION_BOLD: {
+  CAPTION1_BOLD: {
+    size: "13px",
+    weight: 700,
+    height: "15px",
+  },
+  CAPTION1_SEMIBOLD: {
+    size: "13px",
+    weight: 600,
+    height: "15px",
+  },
+  CAPTION1_REGULAR: {
+    size: "13px",
+    weight: 400,
+    height: "15px",
+  },
+  CAPTION2_BOLD: {
     size: "10px",
     weight: 700,
-    height: "normal",
+    height: "10px",
   },
-  CAPTION_REGULAR: {
+  CAPTION2_SEMIBOLD: {
+    size: "10px",
+    weight: 600,
+    height: "10px",
+  },
+  CAPTION2_REGULAR: {
     size: "10px",
     weight: 400,
-    height: "normal",
+    height: "10px",
   },
 };
 

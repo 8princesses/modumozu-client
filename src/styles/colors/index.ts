@@ -16,9 +16,13 @@ const colors = {
     BASIC_LIGHT: "#1B1D1F",
     BASIC_DARK: "#FFFFFF",
     DISABLED: "#C9CDD2",
+    ACCENT: "#FF3B3C",
     SUCCESS: "#3EA5F9",
     WARNING: "#FFDE0A",
-    DANGER: "#FF5619",
+  },
+  FONT: {
+    PRIMARY: "#2D5BEE",
+    ACCENT: "#FF3B3C",
   },
   FONT_LIGHT: {
     PRIMARY: "#1B1D1F",
