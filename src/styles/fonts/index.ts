@@ -1,8 +1,18 @@
 export const fonts = {
-  H1: {
-    size: "32px",
+  H1_BOLD: {
+    size: "26px",
     weight: 700,
-    height: "38px",
+    height: "31px",
+  },
+  H1_SEMIBOLD: {
+    size: "26px",
+    weight: 600,
+    height: "31px",
+  },
+  H1_REGULAR: {
+    size: "26px",
+    weight: 400,
+    height: "31px",
   },
   H2_BOLD: {
     size: "26px",
