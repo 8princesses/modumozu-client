@@ -7,20 +7,40 @@ import EndedStockLogo from "./EndedStockLogo";
 interface EndStockProps {
   stockName: string;
   logoPath: string;
-  isPublic: boolean;
   openDate: Date;
   profit: number;
 }
 
 const EndedStock: FC<EndStockProps> = (props) => {
-  const { stockName, logoPath, isPublic, openDate, profit } = props;
+  const { stockName, logoPath, openDate, profit } = props;
+  const curDate = new Date();
+  const isPublic = curDate > openDate;
+
+  const getDescFontColor = () => {
+    if (!isPublic) {
+      return colors.FONT_LIGHT.SECONDARY;
+    } else if (profit >= 0) {
+      return colors.FONT.ACCENT;
+    } else {
+      return colors.FONT.PRIMARY;
+    }
+  };
+
+  const getDescText = () => {
+    if (!isPublic) {
+      return `${openDate.getMonth() + 1}월${openDate.getDate()}일 상장 예정`;
+    } else if (profit >= 0) {
+      return `공모가 대비 +${profit}%`;
+    } else {
+      return `공모가 대비 ${profit}%`;
+    }
+  };
+
   return (
     <div>
-      <EndedStockLogo path={logoPath} isPublic={isPublic} />
+      <EndedStockLogo isPublic={isPublic} />
       <Title>{stockName}</Title>
-      {!isPublic && <Description fontColor={colors.FONT_LIGHT.SECONDARY}>8월 30일 상장 예정</Description>}
-      {isPublic && profit >= 0 && <Description fontColor={colors.FONT.ACCENT}>공모가 대비 +{profit}%</Description>}
-      {isPublic && profit < 0 && <Description fontColor={colors.FONT.PRIMARY}>공모가 대비 {profit}%</Description>}
+      <Description fontColor={getDescFontColor()}>{getDescText()}</Description>
     </div>
   );
 };
