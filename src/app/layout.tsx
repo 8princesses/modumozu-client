@@ -2,7 +2,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import GlobalStyle from "@/styles/GlobalCss";
-import "./globals.css";
+import RootLayoutStyle from "@/components/common/RootLayout";
 
 // Font files can be colocated inside of `app`
 const myFont = localFont({
@@ -20,7 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className={myFont.className}>
       <body>
         <GlobalStyle />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <RootLayoutStyle>{children}</RootLayoutStyle>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
