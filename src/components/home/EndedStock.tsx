@@ -13,7 +13,6 @@ interface EndStockProps {
 
 const EndedStock: FC<EndStockProps> = (props) => {
   const { stockName, logoPath, openDate, profit } = props;
-  const name = stockName.length > 9 ? stockName.slice(0, 9) + "..." : stockName;
   const curDate = new Date();
   const isPublic = curDate > openDate;
 
@@ -40,7 +39,7 @@ const EndedStock: FC<EndStockProps> = (props) => {
   return (
     <Container>
       <EndedStockLogo isPublic={isPublic} />
-      <Title>{name}</Title>
+      <Title>{stockName}</Title>
       <Description fontColor={getDescFontColor()}>{getDescText()}</Description>
     </Container>
   );
@@ -57,6 +56,9 @@ const Title = styled.h4`
   color: ${colors.FONT_LIGHT.PRIMARY};
   margin: 0;
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Description = styled.p<{ fontColor: string }>`

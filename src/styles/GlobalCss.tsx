@@ -91,6 +91,7 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
 
     border: 0;
+    font-family: pretendard, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   article,

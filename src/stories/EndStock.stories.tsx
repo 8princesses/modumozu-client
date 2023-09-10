@@ -21,7 +21,7 @@ export const BeforePublic: Story = {
 
 export const LongName: Story = {
   args: {
-    stockName: "큐리옥스바이오시스템",
+    stockName: "큐리옥스바이오시스템템",
     logoPath: "/images/company_logo.png",
     openDate: new Date("2023-08-15"),
     profit: 150,

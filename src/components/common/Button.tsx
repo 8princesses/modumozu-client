@@ -8,16 +8,35 @@ type Size = "large" | "small";
 type Shape = "rectangle" | "round";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * 색상
+   */
   color?: Color;
+  /**
+   * 크기
+   */
   size?: Size;
+  /**
+   * 모양
+   * 사각형, 타원
+   */
   shape?: Shape;
+  /**
+   * 버튼 내부 색 여부
+   */
   fill?: boolean;
+  /**
+   * 크기 default = auto
+   */
   width?: string;
+  /**
+   * 비활성화 여부
+   */
   disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const { disabled = false, children, width = "100%", onClick, ...rest } = props;
+  const { disabled = false, children, width = "auto%", onClick, ...rest } = props;
   return (
     <ButtonStyle {...rest} width={width} disabled={disabled} onClick={onClick}>
       {children}
