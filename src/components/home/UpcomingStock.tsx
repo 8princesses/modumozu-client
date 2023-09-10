@@ -183,6 +183,7 @@ const UpcomingStockCardWarp = styled.div`
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0px 1px 8px 0px rgba(27, 29, 31, 0.08);
+  background-color: ${colors.WHITE};
 `;
 const UpcomingStockSubscriptionWrap = styled.div`
   display: flex;
