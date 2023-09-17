@@ -1,5 +1,5 @@
 import colors from "@/styles/colors";
-import { getFonts } from "@/styles/fonts";
+import { FontTypes, getFonts } from "@/styles/fonts";
 import { ButtonHTMLAttributes, FC } from "react";
 import styled from "styled-components";
 
@@ -33,6 +33,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * 비활성화 여부
    */
   disabled?: boolean;
+  /**
+   * 버튼 폰트
+   */
+  font?: FontTypes;
 }
 
 interface ButtonStyleProps extends Omit<ButtonProps, "fill"> {
@@ -159,8 +163,8 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
   border: 0;
   ${(props) => `
     width: ${props.width};
-    ${props.size === "large" ? getFonts("BUTTON1_BOLD") : getFonts("BUTTON2_BOLD")}
     ${getColor(props)}
     ${getShape(props)} 
+    ${getFonts(props.font ?? "BUTTON2_SEMIBOLD")}
   `};
 `;

@@ -241,7 +241,7 @@ export const fonts = {
   },
 };
 
-type FontTypes = keyof typeof fonts;
+export type FontTypes = keyof typeof fonts;
 
 export const getFonts = (font: FontTypes) => {
   return `

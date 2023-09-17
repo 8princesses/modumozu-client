@@ -82,7 +82,7 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
           <UpcomingStockSubscriptionWrap>
             <UpcomingStockSubscriptionText>신규 계좌 개설이 제한되었습니다.</UpcomingStockSubscriptionText>
             <Button color="secondary" shape="round" size="small" onClick={onClick}>
-              계좌 개설
+              제한 해제
             </Button>
           </UpcomingStockSubscriptionWrap>
         );

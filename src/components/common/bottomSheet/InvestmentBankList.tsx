@@ -34,8 +34,8 @@ const InvestmentBankList:FC<InvestmentBankListProps> = (props) => {
           </InvestmentBankCard>
           ))}
       </InvestmentBankCardList>
-      <Button color="secondary" fill={false} width="100%">
-        <ButtonText>닫기</ButtonText>
+      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR">
+        닫기
       </Button>
     </>
   )
@@ -80,10 +80,5 @@ const InvestmentBankCard = styled.div`
   ${getFonts("CAPTION1_REGULAR")}
   color:${colors.FONT_LIGHT.SECONDARY}
 `
-
-const ButtonText = styled.span`
-  ${getFonts("BUTTON1_REGULAR")}
-`;
-
 
 export default InvestmentBankList;
