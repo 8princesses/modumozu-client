@@ -5,6 +5,7 @@ import { getFonts } from "@/styles/fonts";
 import colors from "@/styles/colors";
 import Image from "next/image";
 import getInvestmentBankLogo from "@/util/getInvestmentBankLogo";
+import { BottomSheetTitle } from "./BottomSheetTitle";
 
 interface InvestmentBankListProps {
   /**
@@ -17,56 +18,39 @@ interface InvestmentBankListProps {
   investmentBanks: string[];
 }
 
-const InvestmentBankList:FC<InvestmentBankListProps> = (props) => {
+const InvestmentBankList: FC<InvestmentBankListProps> = (props) => {
   const { stockName, investmentBanks } = props;
+  const shortStockName = stockName.length > 8 ? stockName.slice(0, 8) + "..." : stockName;
 
   return (
     <>
-      <InvestmentBankListTitle>
-        <h2><span>{stockName}</span>의 주간사</h2>
+      <BottomSheetTitle>
+        <h2>
+          <span>{shortStockName}</span>의 주간사
+        </h2>
         <p>{investmentBanks.length}개</p>
-      </InvestmentBankListTitle>
+      </BottomSheetTitle>
       <InvestmentBankCardList>
         {investmentBanks.map((name) => (
           <InvestmentBankCard key={name}>
-            <Image src={getInvestmentBankLogo(name)} width="60" height="60" alt={name}/>
-              {name}
+            <Image src={getInvestmentBankLogo(name)} width="60" height="60" alt={name} />
+            {name}
           </InvestmentBankCard>
-          ))}
+        ))}
       </InvestmentBankCardList>
       <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR">
         닫기
       </Button>
     </>
-  )
-}
-
-const InvestmentBankListTitle = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 24px;
-
-  h2 {
-    display: inline;
-    ${getFonts("H2_SEMIBOLD")}
-    span {
-      color: ${colors.FONT.PRIMARY}
-    }
-  }
-
-  p {
-    display: inline;
-    ${getFonts("H4_REGULAR")}    
-  }
-`
+  );
+};
 
 const InvestmentBankCardList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-bottom: 24px;
-`
+`;
 
 const InvestmentBankCard = styled.div`
   display: flex;
@@ -79,6 +63,6 @@ const InvestmentBankCard = styled.div`
   border-radius: 16px;
   ${getFonts("CAPTION1_REGULAR")}
   color:${colors.FONT_LIGHT.SECONDARY}
-`
+`;
 
 export default InvestmentBankList;
