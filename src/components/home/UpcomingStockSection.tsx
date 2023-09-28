@@ -23,7 +23,7 @@ interface UpcomingStockDataType {
 
 const UpcomingStockSection = () => {
   const [isShowingAllStocks, setIsShowingAllStocks] = useState(false);
-  const AllUpcomingStockData: UpcomingStockDataType[] = [
+  const allUpcomingStockData: UpcomingStockDataType[] = [
     {
       id: "0",
       title: "에이치엠씨아이비스팩6호",
@@ -72,8 +72,8 @@ const UpcomingStockSection = () => {
       accountDueDate: "8월 25일",
     },
   ];
-  const filteredUpcomingStockData = AllUpcomingStockData.filter((data) => data.subscription !== "disable");
-  const upcomingStockData = isShowingAllStocks ? AllUpcomingStockData : filteredUpcomingStockData;
+  const filteredUpcomingStockData = allUpcomingStockData.filter((data) => data.subscription !== "disable");
+  const upcomingStockData = isShowingAllStocks ? allUpcomingStockData : filteredUpcomingStockData;
 
   const handleChangeTapMenu = (value: boolean) => {
     setIsShowingAllStocks(value);
@@ -89,7 +89,7 @@ const UpcomingStockSection = () => {
         options={[
           { label: `청약 가능한 공모주 ${filteredUpcomingStockData.length}`, value: false },
           {
-            label: `전체 공모주 ${AllUpcomingStockData.length}`,
+            label: `전체 공모주 ${allUpcomingStockData.length}`,
             value: true,
           },
         ]}
