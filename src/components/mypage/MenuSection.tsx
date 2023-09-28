@@ -6,38 +6,13 @@ const MenuSection = () => {
   return (
     <SectionWrapper>
       <div>
-        <MenuList
-          menuName="FAQ"
-          handleClick={() => {
-            console.log("click");
-          }}
-        />
-        <MenuList
-          menuName="로그아웃"
-          handleClick={() => {
-            console.log("click");
-          }}
-        />
-        <MenuList
-          menuName="탈퇴하기"
-          handleClick={() => {
-            console.log("click");
-          }}
-        />
+        <MenuList menuName="FAQ" handleClick={() => {}} />
+        <MenuList menuName="로그아웃" handleClick={() => {}} />
+        <MenuList menuName="탈퇴하기" handleClick={() => {}} />
       </div>
       <div>
-        <MenuList
-          menuName="개인정보 처리 방침"
-          handleClick={() => {
-            console.log("click");
-          }}
-        />
-        <MenuList
-          menuName="서비스 이용 동의"
-          handleClick={() => {
-            console.log("click");
-          }}
-        />
+        <MenuList menuName="개인정보 처리 방침" handleClick={() => {}} />
+        <MenuList menuName="서비스 이용 동의" handleClick={() => {}} />
       </div>
     </SectionWrapper>
   );
