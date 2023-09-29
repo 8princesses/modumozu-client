@@ -16,7 +16,7 @@ interface TapMenuProps {
   /**
    * 버튼목록에 들어갈 값 배열
    */
-  options: [TapMenuOption, TapMenuOption];
+  options: TapMenuOption[];
   /**
    * 값 변경 콜백
    */
@@ -26,12 +26,13 @@ interface TapMenuProps {
 const TapMenu: FC<TapMenuProps> = (props) => {
   const { value, onChange, options } = props;
   return (
-    <TabBox>
+    <TabBox count={options.length}>
       {options.map((option) => {
         return (
           <TabButton
             key={option.value}
             $active={(value === option.value).toString()}
+            count={options.length}
             onClick={() => {
               onChange(option.value);
             }}
@@ -46,18 +47,18 @@ const TapMenu: FC<TapMenuProps> = (props) => {
 
 export default TapMenu;
 
-const TabBox = styled.div`
-  padding-inline: 16px;
+const TabBox = styled.div<{ count: number }>`
+  padding-inline: ${(props) => (props.count === 2 ? "16px" : "auto")};
   border-bottom: 1px solid ${colors.GRAY[2]};
 `;
 
-const TabButton = styled.button<{ $active: string }>`
+const TabButton = styled.button<{ $active: string; count: number }>`
   cursor: pointer;
   background-color: transparent;
   border: none;
-  width: 50%;
   padding-block: 15px;
   ${(props) => `
+    width: ${`${100 / props.count}%`};
     ${props.$active === "true" ? getFonts("H5_SEMIBOLD") : getFonts("H5_REGULAR")}
     color: ${props.$active === "true" ? colors.FONT_LIGHT.PRIMARY : colors.FONT_LIGHT.SECONDARY};
     border-bottom: solid 4px ${props.$active === "true" ? colors.ON.BASIC_LIGHT : colors.ON.BASIC_DARK};
