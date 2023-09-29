@@ -11,7 +11,7 @@ const TopBar: FC = () => {
       <Logo />
       <ButtonGroup>
         <IconButton>
-          <HeartIcon />
+          <HeartIcon.fill />
         </IconButton>
         <IconButton>
           <PersonIcon />

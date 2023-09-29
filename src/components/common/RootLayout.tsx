@@ -1,5 +1,6 @@
 "use client";
 
+import colors from "@/styles/colors";
 import { FC, ReactNode, useEffect } from "react";
 import styled from "styled-components";
 
@@ -23,4 +24,5 @@ const RootLayoutWrap = styled.div`
   max-width: 375px;
   width: 100%;
   margin: 0 auto;
+  background-color: ${colors.GRAY[1]};
 `;

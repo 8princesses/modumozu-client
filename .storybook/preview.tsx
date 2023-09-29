@@ -1,8 +1,7 @@
 import type { Preview } from "@storybook/react";
 import React from "react";
-import GlobalStyle from "../src/styles/GlobalCss";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport/preview";
-import "../src/styles/fonts/font.css";
+import "../src/app/globals.css";
 
 const preview: Preview = {
   parameters: {
@@ -22,7 +21,6 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <>
-        <GlobalStyle />
         <Story />
       </>
     ),

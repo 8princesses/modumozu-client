@@ -101,7 +101,7 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
         </div>
         {love && (
           <div>
-            <HeartIcon color={colors.ON.PRIMARY} />
+            <HeartIcon.fill color={colors.ON.PRIMARY} />
           </div>
         )}
       </UpcomingStockCardTop>

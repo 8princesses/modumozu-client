@@ -31,7 +31,7 @@ const TapMenu: FC<TapMenuProps> = (props) => {
         return (
           <TabButton
             key={option.value}
-            active={value === option.value}
+            $active={(value === option.value).toString()}
             onClick={() => {
               onChange(option.value);
             }}
@@ -51,15 +51,15 @@ const TabBox = styled.div`
   border-bottom: 1px solid ${colors.GRAY[2]};
 `;
 
-const TabButton = styled.button<{ active: boolean }>`
+const TabButton = styled.button<{ $active: string }>`
   cursor: pointer;
   background-color: transparent;
   border: none;
   width: 50%;
   padding-block: 15px;
   ${(props) => `
-    ${props.active ? getFonts("H5_SEMIBOLD") : getFonts("H5_REGULAR")}
-    color: ${props.active ? colors.FONT_LIGHT.PRIMARY : colors.FONT_LIGHT.SECONDARY};
-    border-bottom: solid 4px ${props.active ? colors.ON.BASIC_LIGHT : colors.ON.BASIC_DARK};
+    ${props.$active === "true" ? getFonts("H5_SEMIBOLD") : getFonts("H5_REGULAR")}
+    color: ${props.$active === "true" ? colors.FONT_LIGHT.PRIMARY : colors.FONT_LIGHT.SECONDARY};
+    border-bottom: solid 4px ${props.$active === "true" ? colors.ON.BASIC_LIGHT : colors.ON.BASIC_DARK};
   `}
 `;
