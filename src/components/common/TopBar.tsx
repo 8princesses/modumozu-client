@@ -13,7 +13,7 @@ const TopBar: FC = () => {
     <Header>
       <Logo />
       <ButtonGroup>
-        <IconButton>
+        <IconButton onClick={() => router.push("/interesting-stock")}>
           <HeartIcon.fill />
         </IconButton>
         <IconButton onClick={() => router.push("/mypage")}>
