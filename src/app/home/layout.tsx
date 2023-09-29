@@ -1,6 +1,7 @@
 "use client";
 
 import TopBar from "@/components/common/TopBar";
+import colors from "@/styles/colors";
 import React, { FC } from "react";
 import { styled } from "styled-components";
 
@@ -20,6 +21,5 @@ const HomeLayout: FC<LayoutProps> = ({ children }) => {
 export default HomeLayout;
 
 const Container = styled.div`
-  width: 375px;
-  margin: 0 auto;
+  background-color: ${colors.WHITE};
 `;

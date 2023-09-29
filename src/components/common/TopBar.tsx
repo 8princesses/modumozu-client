@@ -2,10 +2,13 @@ import colors from "@/styles/colors";
 import HeartIcon from "@/svg/HeartIcon";
 import Logo from "@/svg/Logo";
 import PersonIcon from "@/svg/PersonIcon";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { styled } from "styled-components";
 
 const TopBar: FC = () => {
+  const router = useRouter();
+
   return (
     <Header>
       <Logo />
@@ -13,7 +16,7 @@ const TopBar: FC = () => {
         <IconButton>
           <HeartIcon.fill />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => router.push("/mypage")}>
           <PersonIcon />
         </IconButton>
       </ButtonGroup>

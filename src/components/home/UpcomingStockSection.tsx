@@ -23,7 +23,7 @@ interface UpcomingStockDataType {
 
 const UpcomingStockSection = () => {
   const [isShowingAllStocks, setIsShowingAllStocks] = useState(false);
-  const upcomingStockData: UpcomingStockDataType[] = [
+  const allUpcomingStockData: UpcomingStockDataType[] = [
     {
       id: "0",
       title: "에이치엠씨아이비스팩6호",
@@ -72,9 +72,8 @@ const UpcomingStockSection = () => {
       accountDueDate: "8월 25일",
     },
   ];
-  const filteredUpcomingStockData = isShowingAllStocks
-    ? upcomingStockData
-    : upcomingStockData.filter((data) => data.subscription !== "disable");
+  const filteredUpcomingStockData = allUpcomingStockData.filter((data) => data.subscription !== "disable");
+  const upcomingStockData = isShowingAllStocks ? allUpcomingStockData : filteredUpcomingStockData;
 
   const handleChangeTapMenu = (value: boolean) => {
     setIsShowingAllStocks(value);
@@ -88,15 +87,15 @@ const UpcomingStockSection = () => {
         onChange={handleChangeTapMenu}
         value={isShowingAllStocks}
         options={[
-          { label: `청약 가능한 공모주${5}`, value: true },
+          { label: `청약 가능한 공모주 ${filteredUpcomingStockData.length}`, value: false },
           {
-            label: `전체 공모주${4}`,
-            value: false,
+            label: `전체 공모주 ${allUpcomingStockData.length}`,
+            value: true,
           },
         ]}
       />
       <UpcomingStockList>
-        {filteredUpcomingStockData.map((data) => (
+        {upcomingStockData.map((data) => (
           <UpcomingStockItem key={data.id}>
             <UpcomingStock.status status={true}>{data.subscriptionDueDate}</UpcomingStock.status>
             <UpcomingStock.cardWrap
