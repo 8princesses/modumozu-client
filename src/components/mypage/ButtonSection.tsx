@@ -6,16 +6,18 @@ import styled from "styled-components";
 import MyPageButton from "./MyPageButton";
 import HeartIcon from "@/svg/HeartIcon";
 import BankIcon from "@/svg/BankIcon";
+import { useRouter } from "next/navigation";
 
 const ButtonSection = () => {
+  const router = useRouter();
   return (
     <Container>
       <ButtonWrapper>
-        <MyPageButton>
+        <MyPageButton handleClick={() => router.push("/home")}>
           <BankIcon color={colors.ON.PRIMARY} />내 계좌
         </MyPageButton>
         <Bar />
-        <MyPageButton>
+        <MyPageButton handleClick={() => router.push("/interesting-stock")}>
           <HeartIcon.fill color={colors.ON.PRIMARY} />
           관심공모주
         </MyPageButton>
