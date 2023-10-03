@@ -14,17 +14,21 @@ interface BottomSheetGuideProps {
    * 가이드 컨텐츠(p, span으로 구성)
    */
   children: ReactNode;
+  /**
+   * 닫기 버튼 클릭 핸들러
+   */
+  handleClose: () => void;
 }
 
 export const BottomSheetGuide: FC<BottomSheetGuideProps> = (props) => {
-  const { title, children } = props;
+  const { title, children, handleClose } = props;
   return (
     <>
       <BottomSheetTitle>
         <h2>{title}</h2>
       </BottomSheetTitle>
       <BottomSheetGuideContent>{children}</BottomSheetGuideContent>
-      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR">
+      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR" onClick={handleClose}>
         닫기
       </Button>
     </>

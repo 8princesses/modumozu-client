@@ -8,6 +8,7 @@ import BankIcon from "@/svg/BankIcon";
 import { getFonts } from "@/styles/fonts";
 import DangerIcon from "@/svg/DangerIcon";
 import Button from "../common/Button";
+import { useRouter } from "next/navigation";
 
 interface UpcomingStockProps {
   children: ReactNode;
@@ -52,6 +53,7 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ status, children })
 };
 const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
   const { category, title, price, love, account, subscription, onClick, date = "" } = props;
+  const router = useRouter();
 
   const renderSubscription = () => {
     switch (subscription) {
@@ -93,7 +95,8 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
 
   // TODO 보유한 계좌의 데이터가 어떤 형식으로 오는지 에상이 안되서 아직 개발 x
   return (
-    <UpcomingStockCardWarp>
+    // TODO onClick은 임시
+    <UpcomingStockCardWarp onClick={() => router.push("/detail/1")}>
       <UpcomingStockCardTop>
         <div>
           <UpcomingStockCardTopCategory>{category}</UpcomingStockCardTopCategory>

@@ -3,12 +3,28 @@ import { getFonts } from "@/styles/fonts";
 import { FC } from "react";
 import styled from "styled-components";
 import { initalModalData, ModalData } from "../mypage/MenuSection";
+import { Overlay } from "./Overlay";
 
 interface ModalProps {
+  /**
+   * 모달 박스 제목
+   */
   title: string;
+  /**
+   * 모달 박스 내용
+   */
   content?: string;
+  /**
+   * 모달 버튼 내용
+   */
   buttonText: [string, string] | string;
+  /**
+   * Primary 버튼 클릭 핸들러
+   */
   handlePrimaryButtonClick: () => void;
+  /**
+   * 모달 on/off 핸들러
+   */
   setIsModalShowing: (v: ModalData) => void;
 }
 
@@ -42,15 +58,6 @@ const Modal: FC<ModalProps> = (props) => {
 };
 
 export default Modal;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${colors.BLACK_TRANSPARENT_SCALE[5]};
-`;
 
 const ModalBox = styled.div`
   position: absolute;
