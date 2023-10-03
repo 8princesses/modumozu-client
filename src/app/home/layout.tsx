@@ -2,6 +2,7 @@
 
 import TopBar from "@/components/common/TopBar";
 import colors from "@/styles/colors";
+import { useRouter } from "next/navigation";
 import React, { FC } from "react";
 import { styled } from "styled-components";
 
@@ -10,9 +11,14 @@ interface LayoutProps {
 }
 
 const HomeLayout: FC<LayoutProps> = ({ children }) => {
+  const router = useRouter();
+
   return (
     <Container>
-      <TopBar />
+      <TopBar
+        handleHeartClick={() => router.push("/interesting-stock")}
+        handlePersonClick={() => router.push("/mypage")}
+      />
       <main>{children}</main>
     </Container>
   );
