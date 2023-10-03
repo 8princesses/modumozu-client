@@ -80,6 +80,8 @@ const IPOIntoLabel = styled.div`
   color:${colors.FONT_LIGHT.SECONDARY};
 `;
 const IPOInfoValue = styled.div`
+  display: flex;
+  align-items: center;
   ${getFonts("H5_MEDIUM")}
   color:${colors.FONT_LIGHT.PRIMARY};
 `;

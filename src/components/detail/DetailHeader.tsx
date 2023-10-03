@@ -9,11 +9,11 @@ const DetailHeader = () => {
   return (
     <Header>
       <div>
-        <BackIcon />
+        <BackButton />
       </div>
       <div>
-        <HeartIcon.border />
-        <ShareIcon />
+        <LikeButton />
+        <ShareButton />
       </div>
     </Header>
   );
@@ -24,4 +24,17 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 16px;
+`;
+
+const BackButton = styled(BackIcon)`
+  cursor: pointer;
+`;
+
+const LikeButton = styled(HeartIcon.border)`
+  cursor: pointer;
+  margin-right: 12px;
+`;
+
+const ShareButton = styled(ShareIcon)`
+  cursor: pointer;
 `;

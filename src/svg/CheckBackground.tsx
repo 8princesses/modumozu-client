@@ -1,5 +1,9 @@
-const CheckBackground = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+import { FC, SVGProps } from "react";
+
+interface CheckBackgroundProps extends SVGProps<SVGSVGElement> {}
+
+const CheckBackground: FC<CheckBackgroundProps> = ({ ...rest }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
     <circle cx="16" cy="16" r="14" fill="#2D5BEE" />
     <path
       fillRule="evenodd"

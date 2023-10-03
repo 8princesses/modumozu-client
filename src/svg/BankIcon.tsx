@@ -1,12 +1,12 @@
-import { FC } from "react";
+import { FC, SVGProps } from "react";
 
-interface FillProps {
+interface BankIconProps extends SVGProps<SVGSVGElement> {
   color?: string;
 }
 
-const BankIcon: FC<FillProps> = ({ color = "#C9CDD2" }) => {
+const BankIcon: FC<BankIconProps> = ({ color = "#C9CDD2", ...rest }) => {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"

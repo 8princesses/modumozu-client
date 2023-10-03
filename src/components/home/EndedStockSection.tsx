@@ -50,8 +50,8 @@ const EndedStockSection: FC = () => {
           />
         ))}
       </EndedStockList>
-      <Button color="secondary" fill={false} size="large" shape="rectangle" width="343px">
-        <ButtonText>10개 더보기</ButtonText>
+      <Button color="secondary" fill={false} size="large" shape="rectangle" width="343px" font="BUTTON1_REGULAR">
+        10개 더보기
       </Button>
     </Section>
   );
@@ -75,8 +75,4 @@ const EndedStockList = styled.div`
 
 const Title = styled.h1`
   ${getFonts("H1_SEMIBOLD")};
-`;
-
-const ButtonText = styled.span`
-  ${getFonts("BUTTON1_REGULAR")}
 `;
