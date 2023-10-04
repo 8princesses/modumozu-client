@@ -6,11 +6,12 @@ import styled from "styled-components";
 
 interface MyPageButtonProps {
   children: React.ReactNode;
+  handleClick: () => void;
 }
 
-const MyPageButton = ({ children }: MyPageButtonProps) => {
+const MyPageButton = ({ children, handleClick }: MyPageButtonProps) => {
   return (
-    <Button>
+    <Button onClick={handleClick}>
       <div>{children}</div>
     </Button>
   );
