@@ -56,7 +56,7 @@ export default Button;
 
 const getColor = ({ color = "primary", fill = "true", disabled = false }: ButtonStyleProps) => {
   if (disabled) {
-    return getDisabled(fill);
+    return getDisabled(fill, color);
   }
   if (color === "primary") {
     if (fill === "true") {
@@ -107,17 +107,32 @@ const getColor = ({ color = "primary", fill = "true", disabled = false }: Button
     }
   `;
 };
-const getDisabled = (fill: string) => {
+const getDisabled = (fill: string, color: Color) => {
+  if (color === "primary") {
+    if (fill === "true") {
+      return `
+      background-color: ${colors.BLUE[5]};
+      opacity: 80%;
+      color:${colors.WHITE};
+      `;
+    }
+    return `
+    background-color: ${colors.WHITE};
+    color:${colors.FONT.PRIMARY};
+    opacity: 80%;
+    outline: 1px solid ${colors.BLUE[1]};
+    `;
+  }
   if (fill === "true") {
     return `
-      background-color: ${colors.GRAY[6]};
-      color:${colors.WHITE};
+    background-color: ${colors.GRAY[6]};
+    color:${colors.WHITE};
     `;
   }
   return `
-    background-color: ${colors.WHITE};
-    color:${colors.FONT_LIGHT.PRIMARY};
-    outline: 1px solid ${colors.GRAY[2]}
+  background-color: ${colors.WHITE};
+  color:${colors.FONT_LIGHT.PRIMARY};
+  outline: 1px solid ${colors.GRAY[2]};
   `;
 };
 const getShape = ({ shape = "rectangle", size = "large" }: ButtonStyleProps) => {

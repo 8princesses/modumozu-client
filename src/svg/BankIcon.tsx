@@ -2,11 +2,20 @@ import { FC, SVGProps } from "react";
 
 interface BankIconProps extends SVGProps<SVGSVGElement> {
   color?: string;
+  width?: number;
+  height?: number;
 }
 
-const BankIcon: FC<BankIconProps> = ({ color = "#C9CDD2", ...rest }) => {
+const BankIcon: FC<BankIconProps> = ({ color = "#C9CDD2", width = 20, height = 20, ...rest }) => {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
+    <svg
+      width={`${width}px`}
+      height={`${height}px`}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
