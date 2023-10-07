@@ -16,7 +16,7 @@ const EndedStock: FC<EndStockProps> = (props) => {
   const curDate = new Date();
   const isPublic = curDate > openDate;
 
-  const getDescFontColor = () => {
+  const getDescColor = () => {
     if (!isPublic) {
       return colors.FONT_LIGHT.SECONDARY;
     } else if (profit >= 0) {
@@ -40,7 +40,7 @@ const EndedStock: FC<EndStockProps> = (props) => {
     <Container>
       <EndedStockLogo isPublic={isPublic} />
       <Title>{stockName}</Title>
-      <Description fontColor={getDescFontColor()}>{getDescText()}</Description>
+      <Description color={getDescColor()}>{getDescText()}</Description>
     </Container>
   );
 };
@@ -61,8 +61,8 @@ const Title = styled.h4`
   text-overflow: ellipsis;
 `;
 
-const Description = styled.p<{ fontColor: string }>`
+const Description = styled.p<{ color: string }>`
   ${getFonts("CAPTION1_REGULAR")};
   margin: 0;
-  color: ${(props) => props.fontColor};
+  color: ${(props) => props.color};
 `;
