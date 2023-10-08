@@ -50,7 +50,7 @@ const EndedStockSection: FC = () => {
           />
         ))}
       </EndedStockList>
-      <Button color="secondary" fill={false} size="large" shape="rectangle" width="343px" font="BUTTON1_REGULAR">
+      <Button color="secondary" fill={false} size="large" shape="rectangle" width="343px" $font="BUTTON1_REGULAR">
         10개 더보기
       </Button>
     </Section>

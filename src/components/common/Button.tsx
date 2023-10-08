@@ -36,7 +36,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * 버튼 폰트
    */
-  font?: FontTypes;
+  $font: FontTypes;
 }
 
 interface ButtonStyleProps extends Omit<ButtonProps, "fill"> {
@@ -44,9 +44,17 @@ interface ButtonStyleProps extends Omit<ButtonProps, "fill"> {
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const { disabled = false, children, width = "auto%", onClick, fill = true, ...rest } = props;
+  const {
+    disabled = false,
+    children,
+    width = "auto%",
+    onClick,
+    fill = true,
+    $font = "BUTTON2_SEMIBOLD",
+    ...rest
+  } = props;
   return (
-    <ButtonStyle {...rest} width={width} disabled={disabled} fill={fill.toString()} onClick={onClick}>
+    <ButtonStyle {...rest} width={width} disabled={disabled} fill={fill.toString()} $font={$font} onClick={onClick}>
       {children}
     </ButtonStyle>
   );
@@ -180,6 +188,6 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
     width: ${props.width};
     ${getColor(props)}
     ${getShape(props)} 
-    ${getFonts(props.font ?? "BUTTON2_SEMIBOLD")}
+    ${getFonts(props.$font)}
   `};
 `;

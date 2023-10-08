@@ -23,10 +23,10 @@ const SelectDate = (props: SelectDateProps) => {
         </ul>
         <input type="date" placeholder="개설일 선택" />
         <div>
-          <Button color="primary" width="100%" font="BUTTON1_SEMIBOLD" disabled={true} onClick={handleClose}>
+          <Button color="primary" width="100%" $font="BUTTON1_SEMIBOLD" disabled={true} onClick={handleClose}>
             선택완료
           </Button>
-          <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR" onClick={handleClose}>
+          <Button color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR" onClick={handleClose}>
             닫기
           </Button>
         </div>

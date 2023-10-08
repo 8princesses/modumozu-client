@@ -17,7 +17,7 @@ export const NoAccount = () => {
         보유 계좌를 추가하고 더 정확한
         <br /> 공모주 일정을 확인하세요.
       </p>
-      <Button shape="round" width="160px" font="BUTTON1_SEMIBOLD" onClick={() => setIsShowingBottomSheet(true)}>
+      <Button shape="round" width="160px" $font="BUTTON1_SEMIBOLD" onClick={() => setIsShowingBottomSheet(true)}>
         보유 계좌 추가
       </Button>
       {isShowingBottomSheet && <SelectDate handleClose={() => setIsShowingBottomSheet(false)} />}

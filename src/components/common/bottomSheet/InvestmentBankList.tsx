@@ -38,7 +38,7 @@ const InvestmentBankList: FC<InvestmentBankListProps> = (props) => {
           </InvestmentBankCard>
         ))}
       </InvestmentBankCardList>
-      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR">
+      <Button color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR">
         닫기
       </Button>
     </>

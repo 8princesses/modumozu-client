@@ -36,7 +36,7 @@ export const BottomSheetAvaillabeTime = () => {
           ))}
         </tbody>
       </Table>
-      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR">
+      <Button color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR">
         닫기
       </Button>
     </>

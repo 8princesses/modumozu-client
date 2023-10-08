@@ -28,7 +28,7 @@ export const BottomSheetGuide: FC<BottomSheetGuideProps> = (props) => {
         <h2>{title}</h2>
       </BottomSheetTitle>
       <BottomSheetGuideContent>{children}</BottomSheetGuideContent>
-      <Button color="secondary" fill={false} width="100%" font="BUTTON1_REGULAR" onClick={handleClose}>
+      <Button color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR" onClick={handleClose}>
         닫기
       </Button>
     </>
