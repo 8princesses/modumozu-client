@@ -13,7 +13,7 @@ const ButtonSection = () => {
   return (
     <Container>
       <ButtonWrapper>
-        <MyPageButton handleClick={() => router.push("/home")}>
+        <MyPageButton handleClick={() => router.push("/account")}>
           <BankIcon color={colors.ON.PRIMARY} />내 계좌
         </MyPageButton>
         <Bar />
