@@ -1,5 +1,6 @@
 "use client";
 
+import Modal from "@/components/common/Modal";
 import DetailCard from "@/components/detail/DetailCard";
 import DetailHeader from "@/components/detail/DetailHeader";
 import DetailTitle from "@/components/detail/DetailTitle";
@@ -53,6 +54,9 @@ const Detail = () => {
           <IPOConfirm data={ipoConfirmDummy} />
         </DetailCard.item>
       </DetailCard.wrapper>
+      <Modal visible={true}>
+        <div>안녕</div>
+      </Modal>
     </div>
   );
 };
