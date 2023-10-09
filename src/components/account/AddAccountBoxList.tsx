@@ -9,6 +9,7 @@ import { BottomSheet } from "../common/bottomSheet/BottomSheet";
 import Portal from "../common/Portal";
 import AgentSelector from "./AgentSelector";
 import { getBankName } from "@/util/getBankName";
+import CustomDatePicker from "../CustomDatePicker";
 
 interface AddAccountBoxListProps {
   accounts: AgentRegisterType[];
@@ -35,16 +36,13 @@ const AddAccountBoxList: FC<AddAccountBoxListProps> = (props) => {
             <h5>새 계좌</h5>
             {accounts.length > 1 && <CircledXIcon onClick={() => removeBox(idx)} />}
           </AddAccountTitle>
-          <div>
-            <button onClick={() => setIsAgentSelectorShowing(idx)}>
+          <ButtonGroup>
+            <AgentSelectButton onClick={() => setIsAgentSelectorShowing(idx)}>
               {item.agentId !== 0 ? <p>{getBankName(item.agentId)}</p> : "증권사 선택"}
               <CaretIcon.down />
-            </button>
-            <button>
-              {item.registeredAt.length > 0 ? <p>{item.registeredAt}</p> : "개설일 선택"}
-              <CaretIcon.down />
-            </button>
-          </div>
+            </AgentSelectButton>
+            <CustomDatePicker />
+          </ButtonGroup>
         </AddAccountBox>
       ))}
       {isAgentSelectorShowing >= 0 && (
@@ -80,29 +78,29 @@ const AddAccountBox = styled.div`
   h5 {
     ${getFonts("H5_SEMIBOLD")}
   }
+`;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
+const AgentSelectButton = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 9px 12px 9px 16px;
+  color: ${colors.FONT_LIGHT.SECONDARY};
+  border: 1px solid ${colors.ON.BASIC_LIGHT};
+  border-radius: 2px;
+  text-align: left;
+
+  p {
+    color: ${colors.FONT_LIGHT.PRIMARY};
   }
+`;
 
-  button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 9px 12px 9px 16px;
-    color: ${colors.FONT_LIGHT.SECONDARY};
-    border: 1px solid ${colors.ON.BASIC_LIGHT};
-    border-radius: 2px;
-    text-align: left;
-
-    p {
-      color: ${colors.FONT_LIGHT.PRIMARY};
-    }
-  }
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
 `;
 
 const AddAccountTitle = styled.section`
