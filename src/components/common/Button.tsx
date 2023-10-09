@@ -36,7 +36,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * 버튼 폰트
    */
-  $font: FontTypes;
+  $font?: FontTypes;
 }
 
 interface ButtonStyleProps extends Omit<ButtonProps, "fill"> {
@@ -188,6 +188,6 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
     width: ${props.width};
     ${getColor(props)}
     ${getShape(props)} 
-    ${getFonts(props.$font)}
+    ${getFonts(props.$font ?? "BUTTON2_SEMIBOLD")}
   `};
 `;

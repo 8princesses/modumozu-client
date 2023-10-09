@@ -6,20 +6,35 @@ import ibkLogo from "../../public/images/ibk_logo.png";
 import skLogo from "../../public/images/sk_logo.png";
 import yuantaLogo from "../../public/images/yuanta_logo.png";
 
-// TODO: 증권사 ID 정해지면 name -> id 로 변경
-// TODO: 전체 증권사 이미지 저장하기
-const getInvestmentBankLogo = (name: string) => {
+// TODO : 로고 추가
+const getInvestmentBankLogo = (id: number) => {
   const logoMap = new Map([
-    ["NH투자증권", nhLogo],
-    ["한화투자증권", hanhwaLogo],
-    ["현대차증권", hyundaiLogo],
-    ["KB증권", kbLogo],
-    ["IBK투자증권", ibkLogo],
-    ["SK증권", skLogo],
-    ["유안타증권", yuantaLogo],
+    [1, kbLogo],
+    [2, kbLogo],
+    [3, yuantaLogo],
+    [4, kbLogo],
+    [5, kbLogo],
+    [6, kbLogo],
+    [7, kbLogo],
+    [8, kbLogo],
+    [9, nhLogo],
+    [10, skLogo],
+    [11, hanhwaLogo],
+    [12, kbLogo],
+    [13, kbLogo],
+    [14, ibkLogo],
+    [15, kbLogo],
+    [16, kbLogo],
+    [17, kbLogo],
+    [18, hyundaiLogo],
+    [19, kbLogo],
+    [20, kbLogo],
+    [21, kbLogo],
+    [22, kbLogo],
+    [23, kbLogo],
   ]);
 
-  return logoMap.get(name) ?? nhLogo;
+  return logoMap.get(id) ?? nhLogo;
 };
 
 export default getInvestmentBankLogo;

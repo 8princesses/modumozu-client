@@ -28,9 +28,9 @@ export const BottomSheetGuide: FC<BottomSheetGuideProps> = (props) => {
         <h2>{title}</h2>
       </BottomSheetTitle>
       <BottomSheetGuideContent>{children}</BottomSheetGuideContent>
-      <Button color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR" onClick={handleClose}>
+      <BottomSheetButton color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR" onClick={handleClose}>
         닫기
-      </Button>
+      </BottomSheetButton>
     </>
   );
 };
@@ -47,4 +47,8 @@ const BottomSheetGuideContent = styled.article`
     color: ${colors.FONT_LIGHT.PRIMARY};
     ${getFonts("BODY1_SEMIBOLD")}
   }
+`;
+
+export const BottomSheetButton = styled(Button)`
+  margin-bottom: 20px;
 `;

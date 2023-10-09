@@ -29,9 +29,11 @@ const BottomSheetBox = styled.div`
   bottom: 0;
   left: 50%;
   translate: -50%;
+  max-height: 95vh;
+  overflow: scroll;
   background-color: ${colors.WHITE};
   border-radius: 16px 16px 0 0;
-  padding: 20px 16px 20px 16px;
+  padding: 20px 16px 0 16px;
   width: 375px;
 
   @media (max-width: 375px) {

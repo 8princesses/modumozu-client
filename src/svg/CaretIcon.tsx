@@ -23,9 +23,21 @@ const Right: FC<CaretProps> = ({ width = 24, height = 24, ...rest }) => (
   </svg>
 );
 
+const Down: FC<CaretProps> = ({ width = 24, height = 24, ...rest }) => (
+  <svg width={`${width}`} height={`${height}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M4.77917 8.30689C5.16196 7.90879 5.795 7.89637 6.19311 8.27917L12 13.8627L17.8069 8.27917C18.205 7.89637 18.838 7.90879 19.2208 8.30689C19.6036 8.705 19.5912 9.33804 19.1931 9.72083L12.6931 15.9708C12.306 16.3431 11.694 16.3431 11.3069 15.9708L4.80689 9.72083C4.40879 9.33804 4.39637 8.705 4.77917 8.30689Z"
+      fill="#1B1D1F"
+    />
+  </svg>
+);
+
 export default Object.assign(
   {},
   {
     right: Right,
+    down: Down,
   },
 );

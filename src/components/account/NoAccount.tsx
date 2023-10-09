@@ -5,7 +5,7 @@ import styled from "styled-components";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
 import { useState } from "react";
-import SelectDate from "./SelectDate";
+import AddAccount from "./AddAccount";
 
 export const NoAccount = () => {
   const [isShowingBottomSheet, setIsShowingBottomSheet] = useState(false);
@@ -20,7 +20,7 @@ export const NoAccount = () => {
       <Button shape="round" width="160px" $font="BUTTON1_SEMIBOLD" onClick={() => setIsShowingBottomSheet(true)}>
         보유 계좌 추가
       </Button>
-      {isShowingBottomSheet && <SelectDate handleClose={() => setIsShowingBottomSheet(false)} />}
+      <AddAccount visible={isShowingBottomSheet} setInvisible={() => setIsShowingBottomSheet(false)} />
     </NoAccountWrapper>
   );
 };

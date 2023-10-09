@@ -11,7 +11,7 @@ const MyPage: FC = () => {
     return <p>loading...</p>;
   }
 
-  if (data?.data.length === 0) return <NoAccount></NoAccount>;
+  return <NoAccount></NoAccount>;
 };
 
 export default MyPage;
