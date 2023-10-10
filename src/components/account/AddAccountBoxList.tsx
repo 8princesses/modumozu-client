@@ -9,7 +9,7 @@ import { BottomSheet } from "../common/bottomSheet/BottomSheet";
 import Portal from "../common/Portal";
 import AgentSelector from "./AgentSelector";
 import { getBankName } from "@/util/getBankName";
-import CustomDatePicker from "../CustomDatePicker";
+import CustomDatePicker from "../common/CustomDatePicker";
 
 interface AddAccountBoxListProps {
   accounts: AgentRegisterType[];
