@@ -1,13 +1,13 @@
-import Modal from "@/components/common/Modal";
+import SmallModalBox from "@/components/common/SmallModalBox";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: "Common/Modal",
-  component: Modal,
+  title: "Common/SmallModalBox",
+  component: SmallModalBox,
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof Modal>;
+} satisfies Meta<typeof SmallModalBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MenuList from "./MenuList";
 import colors from "@/styles/colors";
 import { useState } from "react";
-import Modal from "../common/Modal";
+import SmallModalBox from "../common/SmallModalBox";
 
 export interface ModalData {
   title: string;
@@ -67,7 +67,7 @@ const MenuSection = () => {
         />
       </MenuGroup>
       {isModalShowing.title.length > 0 && (
-        <Modal
+        <SmallModalBox
           title={isModalShowing.title}
           content={isModalShowing.content}
           buttonText={isModalShowing.buttonText}

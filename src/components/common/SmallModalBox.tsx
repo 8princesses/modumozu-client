@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { initalModalData, ModalData } from "../mypage/MenuSection";
 import { Overlay } from "./Overlay";
 
-interface ModalProps {
+interface SmallModalBoxProps {
   /**
    * 모달 박스 제목
    */
@@ -28,7 +28,7 @@ interface ModalProps {
   setIsModalShowing: (v: ModalData) => void;
 }
 
-const Modal: FC<ModalProps> = (props) => {
+const SmallModalBox: FC<SmallModalBoxProps> = (props) => {
   const { title, content, buttonText, handlePrimaryButtonClick, setIsModalShowing } = props;
   return (
     <Overlay onClick={() => setIsModalShowing(initalModalData)}>
@@ -57,7 +57,7 @@ const Modal: FC<ModalProps> = (props) => {
   );
 };
 
-export default Modal;
+export default SmallModalBox;
 
 const ModalBox = styled.div`
   position: absolute;
