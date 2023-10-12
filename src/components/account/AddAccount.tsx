@@ -7,6 +7,7 @@ import PlusIcon from "@/svg/PlusIcon";
 import XIcon from "@/svg/XIcon";
 import Button from "../common/Button";
 import AddAccountBoxList from "./AddAccountBoxList";
+import { addMyAccounts } from "@/service/apiService";
 
 interface AddAccountProps {
   /**
@@ -77,7 +78,14 @@ const AddAccount: FC<AddAccountProps> = (props) => {
             </section>
           </Wrapper>
           <ButtonSection>
-            <Button width="100%" disabled={true}>
+            <Button
+              width="100%"
+              disabled={accounts.find((item) => item.agentId > 0 && item.registeredAt.length > 0) === undefined}
+              onClick={() => {
+                addMyAccounts(accounts.filter((item) => item.agentId > 0 && item.registeredAt.length > 0));
+                window.location.reload();
+              }}
+            >
               추가 완료
             </Button>
           </ButtonSection>

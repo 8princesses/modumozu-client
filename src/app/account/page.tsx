@@ -1,4 +1,5 @@
 "use client";
+import Accounts from "@/components/account/Accounts";
 import { NoAccount } from "@/components/account/NoAccount";
 import { fetchMyAccounts } from "@/service/apiService";
 import { useQuery } from "@tanstack/react-query";
@@ -9,9 +10,9 @@ const MyPage: FC = () => {
 
   if (isLoading) {
     return <p>loading...</p>;
+  } else {
+    return data?.length == 0 ? <NoAccount /> : <Accounts myAccounts={data ?? []} />;
   }
-
-  return <NoAccount></NoAccount>;
 };
 
 export default MyPage;

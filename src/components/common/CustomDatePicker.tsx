@@ -1,11 +1,18 @@
 import colors from "@/styles/colors";
-import { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
 import "@/styles/datepicker.css";
+import { AgentRegisterType } from "../account/AddAccount";
 
-const CustomDatePicker = () => {
+interface CustomDatePickerProps {
+  boxIdx: number;
+  setAccounts: Dispatch<SetStateAction<AgentRegisterType[]>>;
+}
+
+const CustomDatePicker: FC<CustomDatePickerProps> = (props) => {
+  const { boxIdx, setAccounts } = props;
   const [selectedDate, setSelectedDate] = useState<Date | null>();
 
   return (
@@ -32,7 +39,22 @@ const CustomDatePicker = () => {
       shouldCloseOnSelect
       maxDate={new Date()}
       selected={selectedDate}
-      onChange={(date: Date) => setSelectedDate(date)}
+      onChange={(date: Date) => {
+        setSelectedDate(date);
+        setAccounts((prev) => {
+          const newPrev = [...prev];
+          newPrev.splice(boxIdx, 1, {
+            agentId: prev[boxIdx].agentId,
+            registeredAt:
+              date.getFullYear() +
+              "-" +
+              ("0" + (date.getMonth() + 1)).slice(-2) +
+              "-" +
+              ("0" + date.getDate()).slice(-2),
+          });
+          return newPrev;
+        });
+      }}
       placeholderText="개설일 선택"
       dayClassName={(date) => (date.getDay() === 0 || date.getDay() === 6 ? "weekend" : "")}
       withPortal

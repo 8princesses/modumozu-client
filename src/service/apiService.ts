@@ -1,3 +1,4 @@
+import { AgentRegisterType } from "@/components/account/AddAccount";
 import axios from "axios";
 
 const API_BASE_URL = "https://api.modumozu.com/api/ipo/v1";
@@ -5,17 +6,29 @@ const API_BASE_URL = "https://api.modumozu.com/api/ipo/v1";
 const client = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    Authorization:
-      "Bearer token",
+    Authorization: "Bearer token",
   },
 });
 
-interface myAccounts {
-  data: string[];
-  timestamp: number;
+export interface myAccountType {
+  id: string;
+  agentId: number;
+  registeredAt: string;
 }
 
-export const fetchMyAccounts = async (): Promise<myAccounts> => {
+export const fetchMyAccounts = async (): Promise<myAccountType[]> => {
   const { data } = await client.get(API_BASE_URL + "/agent/member");
-  return data;
+  return data.data;
+};
+
+export const addMyAccounts = async (addAgentList: AgentRegisterType[]) => {
+  const resp = await client.post(API_BASE_URL + "/agent/member", {
+    memberAgentList: addAgentList,
+  });
+  return resp;
+};
+
+export const deleteMyAccount = async (id: string) => {
+  const resp = await client.delete(API_BASE_URL + "/agent/member/" + id);
+  return resp;
 };

@@ -41,7 +41,7 @@ const AddAccountBoxList: FC<AddAccountBoxListProps> = (props) => {
               {item.agentId !== 0 ? <p>{getBankName(item.agentId)}</p> : "증권사 선택"}
               <CaretIcon.down />
             </AgentSelectButton>
-            <CustomDatePicker />
+            <CustomDatePicker boxIdx={idx} setAccounts={setAccounts} />
           </ButtonGroup>
         </AddAccountBox>
       ))}

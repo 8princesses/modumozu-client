@@ -47,7 +47,7 @@ const AgentSelector: FC<AgentSelectorProps> = (props) => {
               const newPrev = [...prev];
               newPrev.splice(isAgentSelectorShowing, 1, {
                 agentId: selectedAgent,
-                registeredAt: "",
+                registeredAt: prev[isAgentSelectorShowing].registeredAt,
               });
               return newPrev;
             });
