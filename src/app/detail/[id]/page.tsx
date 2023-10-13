@@ -54,9 +54,6 @@ const Detail = () => {
           <IPOConfirm data={ipoConfirmDummy} />
         </DetailCard.item>
       </DetailCard.wrapper>
-      <Modal visible={true}>
-        <div>안녕</div>
-      </Modal>
     </div>
   );
 };

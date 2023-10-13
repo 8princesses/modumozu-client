@@ -3,8 +3,10 @@
 }
 
 .react-datepicker__portal {
-  width: 375px;
-  background-color: rgba(0, 0, 0, 0.72);
+  max-width: 375px;
+  left: 50%;
+  translate: -50%;
+  background-color: #0000007a;
 }
 
 .react-datepicker__portal .react-datepicker__current-month {

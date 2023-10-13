@@ -1,13 +1,12 @@
-import { FC, useEffect, useState } from "react";
-import Portal from "../common/Portal";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
 import PlusIcon from "@/svg/PlusIcon";
-import XIcon from "@/svg/XIcon";
 import Button from "../common/Button";
 import AddAccountBoxList from "./AddAccountBoxList";
 import { addMyAccounts } from "@/service/apiService";
+import FullScreenModal from "../common/FullScreenModal";
 
 interface AddAccountProps {
   /**
@@ -34,83 +33,51 @@ const AddAccount: FC<AddAccountProps> = (props) => {
   const { visible, setInvisible } = props;
   const [accounts, setAccounts] = useState<AgentRegisterType[]>([emptyAgent]);
 
-  useEffect(() => {
-    if (visible && document.body) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [visible]);
-
   return (
-    <Portal>
-      {visible && (
-        <>
-          <Wrapper>
-            <Description>
-              <h2>
-                새로 개설한 증권 계좌를 <br />
-                추가해주세요.
-              </h2>
-              <ul>
-                <li>계좌 개설일을 알려주시면 청약 가능한 공모주를 정확하게 알려드려요.</li>
-                <li>
-                  유진증권, 삼성증권, 키움증권, 한화투자증권을 제외한 증권사들은 20일 내에 계좌 개설 내역이 있을 경우
-                  신규 계좌 개설을 제한하고 있어요.
-                </li>
-              </ul>
-            </Description>
-            <CloseButton onClick={setInvisible}>
-              <XIcon />
-            </CloseButton>
-            <section>
-              <AddAccountButton
-                onClick={() =>
-                  setAccounts((prev) => {
-                    if (prev.length >= 10) return prev;
-                    return [...prev, emptyAgent];
-                  })
-                }
-              >
-                <PlusIcon /> 새 계좌 추가
-              </AddAccountButton>
-              <AddAccountBoxList accounts={accounts} setAccounts={setAccounts} />
-            </section>
-          </Wrapper>
-          <ButtonSection>
-            <Button
-              width="100%"
-              disabled={accounts.find((item) => item.agentId > 0 && item.registeredAt.length > 0) === undefined}
-              onClick={() => {
-                addMyAccounts(accounts.filter((item) => item.agentId > 0 && item.registeredAt.length > 0));
-                window.location.reload();
-              }}
-            >
-              추가 완료
-            </Button>
-          </ButtonSection>
-        </>
-      )}
-    </Portal>
+    <FullScreenModal visible={visible} setInvisible={setInvisible}>
+      <Description>
+        <h2>
+          새로 개설한 증권 계좌를 <br />
+          추가해주세요.
+        </h2>
+        <ul>
+          <li>계좌 개설일을 알려주시면 청약 가능한 공모주를 정확하게 알려드려요.</li>
+          <li>
+            유진증권, 삼성증권, 키움증권, 한화투자증권을 제외한 증권사들은 20일 내에 계좌 개설 내역이 있을 경우 신규
+            계좌 개설을 제한하고 있어요.
+          </li>
+        </ul>
+      </Description>
+      <section>
+        <AddAccountButton
+          onClick={() =>
+            setAccounts((prev) => {
+              if (prev.length >= 10) return prev;
+              return [...prev, emptyAgent];
+            })
+          }
+        >
+          <PlusIcon /> 새 계좌 추가
+        </AddAccountButton>
+        <AddAccountBoxList accounts={accounts} setAccounts={setAccounts} />
+      </section>
+      <ButtonSection>
+        <Button
+          width="100%"
+          disabled={accounts.find((item) => item.agentId > 0 && item.registeredAt.length > 0) === undefined}
+          onClick={() => {
+            addMyAccounts(accounts.filter((item) => item.agentId > 0 && item.registeredAt.length > 0));
+            window.location.reload();
+          }}
+        >
+          추가 완료
+        </Button>
+      </ButtonSection>
+    </FullScreenModal>
   );
 };
 
 export default AddAccount;
-
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  width: 100%;
-  max-width: 375px;
-  height: 100%;
-  min-height: 100vh;
-  overflow: scroll;
-  background-color: ${colors.GRAY[1]};
-  padding: 20px 16px 20px 16px;
-`;
 
 const Description = styled.section`
   box-sizing: border-box;
@@ -130,12 +97,6 @@ const Description = styled.section`
     text-decoration: dotted;
     margin-left: 20px;
   }
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 20px;
-  right: 16px;
 `;
 
 const AddAccountButton = styled.button`

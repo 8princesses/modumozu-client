@@ -66,15 +66,14 @@ const MenuSection = () => {
           }}
         />
       </MenuGroup>
-      {isModalShowing.title.length > 0 && (
-        <SmallModalBox
-          title={isModalShowing.title}
-          content={isModalShowing.content}
-          buttonText={isModalShowing.buttonText}
-          handlePrimaryButtonClick={isModalShowing.handlePrimaryButtonClick}
-          setIsModalShowing={setIsModalShowing}
-        />
-      )}
+      <SmallModalBox
+        visible={isModalShowing.title.length > 0}
+        title={isModalShowing.title}
+        content={isModalShowing.content}
+        buttonText={isModalShowing.buttonText}
+        handlePrimaryButtonClick={isModalShowing.handlePrimaryButtonClick}
+        setIsModalShowing={setIsModalShowing}
+      />
     </SectionWrapper>
   );
 };

@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Button from "../Button";
 import { BottomSheetTitle } from "./BottomSheetTitle";
 import InvestmentBankCardList from "../InvestmentBankCardList";
 import { BottomSheetButton } from "./BottomSheetGuide";

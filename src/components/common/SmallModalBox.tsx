@@ -3,9 +3,13 @@ import { getFonts } from "@/styles/fonts";
 import { FC } from "react";
 import styled from "styled-components";
 import { initalModalData, ModalData } from "../mypage/MenuSection";
-import { Overlay } from "./Overlay";
+import Modal from "./Modal";
 
 interface SmallModalBoxProps {
+  /**
+   * 화면에 노출 시킬지 여부
+   */
+  visible: boolean;
   /**
    * 모달 박스 제목
    */
@@ -29,9 +33,9 @@ interface SmallModalBoxProps {
 }
 
 const SmallModalBox: FC<SmallModalBoxProps> = (props) => {
-  const { title, content, buttonText, handlePrimaryButtonClick, setIsModalShowing } = props;
+  const { visible, title, content, buttonText, handlePrimaryButtonClick, setIsModalShowing } = props;
   return (
-    <Overlay onClick={() => setIsModalShowing(initalModalData)}>
+    <Modal visible={visible} onOutsideClick={() => setIsModalShowing(initalModalData)}>
       <ModalBox onClick={(e) => e.stopPropagation()}>
         <h3>{title}</h3>
         {content ? <p>{content}</p> : null}
@@ -53,7 +57,7 @@ const SmallModalBox: FC<SmallModalBoxProps> = (props) => {
           )}
         </div>
       </ModalBox>
-    </Overlay>
+    </Modal>
   );
 };
 

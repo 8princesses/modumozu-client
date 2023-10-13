@@ -15,9 +15,8 @@ const IPOInfo = () => {
   const [isModalShowing, setIsModalShowing] = useState<BottomSheetStatus>("NONE");
 
   const renderBottomSheet = () => {
-    if (isModalShowing === "NONE") return;
     return (
-      <BottomSheet handleOverlayClick={() => setIsModalShowing("NONE")}>
+      <BottomSheet visible={isModalShowing !== "NONE"} handleOverlayClick={() => setIsModalShowing("NONE")}>
         {isModalShowing === "DEPOSIT" && (
           <BottomSheetGuide title="청약증거금율" handleClose={() => setIsModalShowing("NONE")}>
             <p>

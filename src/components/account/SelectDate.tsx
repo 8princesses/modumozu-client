@@ -9,7 +9,7 @@ interface SelectDateProps {
 const SelectDate = (props: SelectDateProps) => {
   const { handleClose } = props;
   return (
-    <BottomSheet handleOverlayClick={handleClose}>
+    <BottomSheet visible={true} handleOverlayClick={handleClose}>
       <div>
         <BottomSheetTitle>
           <h2>계좌 개설일을 선택해주세요.</h2>

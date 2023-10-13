@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AgentRegisterType } from "./AddAccount";
 import { BottomSheet } from "../common/bottomSheet/BottomSheet";
-import Portal from "../common/Portal";
 import AgentSelector from "./AgentSelector";
 import { getBankName } from "@/util/getBankName";
 import CustomDatePicker from "../common/CustomDatePicker";
@@ -45,17 +44,13 @@ const AddAccountBoxList: FC<AddAccountBoxListProps> = (props) => {
           </ButtonGroup>
         </AddAccountBox>
       ))}
-      {isAgentSelectorShowing >= 0 && (
-        <Portal>
-          <BottomSheet handleOverlayClick={() => setIsAgentSelectorShowing(-1)}>
-            <AgentSelector
-              setAccounts={setAccounts}
-              isAgentSelectorShowing={isAgentSelectorShowing}
-              setIsAgentSelectorShowing={setIsAgentSelectorShowing}
-            />
-          </BottomSheet>
-        </Portal>
-      )}
+      <BottomSheet visible={isAgentSelectorShowing >= 0} handleOverlayClick={() => setIsAgentSelectorShowing(-1)}>
+        <AgentSelector
+          setAccounts={setAccounts}
+          isAgentSelectorShowing={isAgentSelectorShowing}
+          setIsAgentSelectorShowing={setIsAgentSelectorShowing}
+        />
+      </BottomSheet>
     </>
   );
 };

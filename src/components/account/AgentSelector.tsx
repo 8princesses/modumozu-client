@@ -68,6 +68,10 @@ export default AgentSelector;
 
 const AgentSelectorWrapper = styled.div`
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ButtonGroup = styled.div`
