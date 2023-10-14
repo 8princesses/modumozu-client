@@ -41,13 +41,13 @@ const SmallModalBox: FC<SmallModalBoxProps> = (props) => {
         {content ? <p>{content}</p> : null}
         <div>
           {typeof buttonText === "string" ? (
-            <ModalButton primary={true} onClick={handlePrimaryButtonClick}>
+            <ModalButton $primary={true} onClick={handlePrimaryButtonClick}>
               {buttonText}
             </ModalButton>
           ) : (
             buttonText.map((text, idx) => (
               <ModalButton
-                primary={idx === 1}
+                $primary={idx === 1}
                 onClick={idx === 1 ? handlePrimaryButtonClick : () => setIsModalShowing(initalModalData)}
                 key={text}
               >
@@ -95,11 +95,11 @@ const ModalBox = styled.div`
   }
 `;
 
-const ModalButton = styled.button<{ primary: boolean }>`
+const ModalButton = styled.button<{ $primary: boolean }>`
   flex-grow: 1;
   padding: 16px 20px 16px 20px;
   border-radius: 6px;
-  background-color: ${(props) => (props.primary ? colors.ON.PRIMARY : colors.BLUE[1])};
-  color: ${(props) => (props.primary ? colors.WHITE : colors.ON.PRIMARY)};
+  background-color: ${(props) => (props.$primary ? colors.ON.PRIMARY : colors.BLUE[1])};
+  color: ${(props) => (props.$primary ? colors.WHITE : colors.ON.PRIMARY)};
   ${getFonts("BUTTON1_SEMIBOLD")}
 `;

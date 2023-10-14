@@ -28,6 +28,14 @@ export const addMyAccounts = async (addAgentList: AgentRegisterType[]) => {
   return resp;
 };
 
+export const modifyMyAccount = async (account: myAccountType) => {
+  const resp = await client.put(API_BASE_URL + "/agent/member/" + account.id, {
+    agentId: account.agentId,
+    registeredAt: account.registeredAt,
+  });
+  return resp;
+};
+
 export const deleteMyAccount = async (id: string) => {
   const resp = await client.delete(API_BASE_URL + "/agent/member/" + id);
   return resp;

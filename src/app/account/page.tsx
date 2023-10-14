@@ -11,7 +11,7 @@ const MyPage: FC = () => {
   if (isLoading) {
     return <p>loading...</p>;
   } else {
-    return data?.length == 0 ? <NoAccount /> : <Accounts myAccounts={data ?? []} />;
+    return data?.length == 0 || !data ? <NoAccount /> : <Accounts myAccounts={data ?? []} />;
   }
 };
 

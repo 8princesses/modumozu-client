@@ -9,6 +9,8 @@ import Button from "../common/Button";
 import { myAccountType } from "@/service/apiService";
 import { FC, useState } from "react";
 import AddAccount from "./AddAccount";
+import { BottomSheet } from "../common/bottomSheet/BottomSheet";
+import BottomSheetAccountMenu from "../common/bottomSheet/BottomSheetAccountMenu";
 
 interface AccountsProps {
   myAccounts: myAccountType[];
@@ -17,6 +19,12 @@ interface AccountsProps {
 const Accounts: FC<AccountsProps> = (props) => {
   const { myAccounts } = props;
   const [isShowingAddModal, setIsShowingAddModal] = useState(false);
+  const [isShowingMenu, setIsShowingMenu] = useState(false);
+  const [selectedAccount, setSelectedAccount] = useState<myAccountType>({
+    id: "",
+    agentId: 0,
+    registeredAt: "",
+  });
 
   return (
     <>
@@ -44,7 +52,12 @@ const Accounts: FC<AccountsProps> = (props) => {
                 <h6>{getBankName(account.agentId)}</h6>
                 <p>{account.registeredAt} 개설</p>
               </div>
-              <MenuIcon onClick={() => {}} />
+              <MenuIcon
+                onClick={() => {
+                  setIsShowingMenu(true);
+                  setSelectedAccount(account);
+                }}
+              />
             </AccountItemInfo>
           </AccountItem>
         ))}
@@ -55,6 +68,9 @@ const Accounts: FC<AccountsProps> = (props) => {
         </Button>
       </ButtonSection>
       <AddAccount visible={isShowingAddModal} setInvisible={() => setIsShowingAddModal(false)} />
+      <BottomSheet visible={isShowingMenu} handleOverlayClick={() => setIsShowingMenu(false)}>
+        <BottomSheetAccountMenu selectedAccount={selectedAccount} handleClose={() => setIsShowingMenu(false)} />
+      </BottomSheet>
     </>
   );
 };
