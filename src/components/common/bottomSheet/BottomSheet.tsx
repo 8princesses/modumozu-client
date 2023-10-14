@@ -48,7 +48,6 @@ const BottomSheetBox = styled.div`
   @media (max-width: 375px) {
     width: 100vw;
   }
-
   &::-webkit-scrollbar {
     display: none;
   }
