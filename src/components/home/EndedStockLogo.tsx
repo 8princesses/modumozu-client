@@ -4,18 +4,24 @@ import { styled } from "styled-components";
 import companyLogo from "../../../public/images/company_logo.png";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
+import BankIcon from "@/svg/BankIcon";
 
 interface LogoProps {
-  path?: string;
+  path: string;
   isPublic: boolean;
 }
 
 const EndedStockLogo: FC<LogoProps> = (props) => {
-  const { path = companyLogo, isPublic } = props;
+  const { path, isPublic } = props;
+  const logoPath = path.length > 0 ? path : companyLogo;
   return (
     <LogoImage>
       {!isPublic && <Overlay>상장 예정</Overlay>}
-      <Image src={path} width="100" height="100" alt="company logo" />
+      {path.length > 0 ? (
+        <Image src={logoPath} width="100" height="100" alt="company logo" />
+      ) : (
+        <BankIcon width={80} height={80} />
+      )}
     </LogoImage>
   );
 };
@@ -33,6 +39,7 @@ const LogoImage = styled.div`
   border: 1px solid ${colors.GRAY[2]};
   border-radius: 12px;
   margin-bottom: 8px;
+  filter: grayscale(1);
 `;
 
 const Overlay = styled.div`

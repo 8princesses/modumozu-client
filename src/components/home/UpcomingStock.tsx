@@ -8,66 +8,78 @@ import BankIcon from "@/svg/BankIcon";
 import { getFonts } from "@/styles/fonts";
 import DangerIcon from "@/svg/DangerIcon";
 import Button from "../common/Button";
+import { getBankName } from "@/util/getBankName";
+import Badge from "../common/Badge";
 
 interface UpcomingStockProps {
   children: ReactNode;
 }
 interface UpcomingStockStatusProps {
-  status: boolean;
-  children: string;
+  startDate: string;
+  endDate: string;
 }
-type Subscription = "disable" | "able" | "limit";
+export type CardType = "B" | "C" | "D" | "E";
 interface UpcomingStockCardProps {
+  id: number;
   category: string;
   title: string;
   children?: ReactNode;
   price: [number, number];
-  account: string;
+  account: number[];
+  nonRemainAccounts: number[];
   love: boolean;
-  subscription?: Subscription;
-  date?: string;
+  cardType: CardType;
+  proposalAgent: number;
+  proposalEndDate: string;
   onClick?: () => void;
 }
 
 const UpcomingStockMain: FC<UpcomingStockProps> = ({ children }) => {
   return <article>{children}</article>;
 };
-const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ status, children }) => {
-  // TODO 날짜 어떻게 처리할 지
-  if (status) {
+const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate }) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const current = new Date();
+
+  let diff = Math.abs(start.getTime() - current.getTime());
+  diff = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  if (start < current) {
     return (
       <UpcomingStockStatusWrap>
         <Dot />
         <UpcomingStockStatusLabel color={colors.FONT.ACCENT}> 진행 중 </UpcomingStockStatusLabel>
-        <span>{`마감일 ${children}`}</span>
+        <span>{`마감일 ${end.getMonth() + 1 + "월 " + end.getDate() + "일"}`}</span>
       </UpcomingStockStatusWrap>
     );
   }
   return (
     <UpcomingStockStatusWrap>
-      <UpcomingStockStatusLabel color={colors.FONT_LIGHT.TERIARY}>D - 5 </UpcomingStockStatusLabel>
-      <span>{`청약일 ${children}`}</span>
+      <UpcomingStockStatusLabel color={colors.FONT_LIGHT.TERIARY}>D - {diff} </UpcomingStockStatusLabel>
+      <span>{`청약일 ${start.getMonth() + 1 + "월 " + start.getDate() + "일"}`}</span>
     </UpcomingStockStatusWrap>
   );
 };
 const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
-  const { category, title, price, love, account, subscription, onClick, date = "" } = props;
+  const {
+    id,
+    category,
+    title,
+    price,
+    love,
+    account,
+    nonRemainAccounts,
+    cardType,
+    onClick,
+    proposalEndDate,
+    proposalAgent,
+  } = props;
+  const endDate = new Date(proposalEndDate);
 
   const renderSubscription = () => {
-    switch (subscription) {
-      case "able":
-        return (
-          <UpcomingStockSubscriptionWrap>
-            <span>
-              <UpcomingStockSubscriptionDateText>{date}</UpcomingStockSubscriptionDateText>
-              <UpcomingStockSubscriptionText>까지 계좌를 개설해주세요.</UpcomingStockSubscriptionText>
-            </span>
-            <Button shape="round" size="small" onClick={onClick}>
-              계좌 개설
-            </Button>
-          </UpcomingStockSubscriptionWrap>
-        );
-      case "disable":
+    switch (cardType) {
+      case "B":
         return (
           <UpcomingStockSubscriptionWrap>
             <UpcomingStockSubscriptionDisableWrap>
@@ -77,7 +89,23 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
             </UpcomingStockSubscriptionDisableWrap>
           </UpcomingStockSubscriptionWrap>
         );
-      case "limit":
+      case "C":
+        return (
+          <UpcomingStockSubscriptionWrap>
+            <span>
+              <UpcomingStockSubscriptionDateText>
+                {getBankName(proposalAgent)?.slice(0, -2) + " "}
+              </UpcomingStockSubscriptionDateText>
+              <UpcomingStockSubscriptionText>
+                {endDate.getMonth() + 1 + "월" + endDate.getDate() + "일까지 개설 필요"}
+              </UpcomingStockSubscriptionText>
+            </span>
+            <Button shape="round" size="small" onClick={onClick}>
+              계좌 개설
+            </Button>
+          </UpcomingStockSubscriptionWrap>
+        );
+      case "E":
         return (
           <UpcomingStockSubscriptionWrap>
             <UpcomingStockSubscriptionText>신규 계좌 개설이 제한되었습니다.</UpcomingStockSubscriptionText>
@@ -91,7 +119,6 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
     }
   };
 
-  // TODO 보유한 계좌의 데이터가 어떤 형식으로 오는지 에상이 안되서 아직 개발 x
   return (
     <UpcomingStockCardWarp>
       <UpcomingStockCardTop>
@@ -114,15 +141,31 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
           <BankIcon />
           <UpcomingStockCardInfoAccountList>
             <UpcomingStockCardInfoAccountListItem>
-              <span>{account}</span>
+              {account.length > 0 && (
+                <>
+                  <span>
+                    {account.slice(0, 2).map((id) => getBankName(id)) +
+                      (account.length > 2 ? `외 ${account.length - 2}개` : "")}
+                  </span>
+                  <Badge type="primary">보유</Badge>
+                </>
+              )}
             </UpcomingStockCardInfoAccountListItem>
             <UpcomingStockCardInfoAccountListItem>
-              <span>{account}</span>
+              {nonRemainAccounts.length > 0 && (
+                <>
+                  <span>
+                    {nonRemainAccounts.slice(0, 2).map((id) => getBankName(id)) +
+                      (nonRemainAccounts.length > 2 ? `외 ${nonRemainAccounts.length - 2}개` : "")}
+                  </span>
+                  <Badge type="secondary">미보유</Badge>
+                </>
+              )}
             </UpcomingStockCardInfoAccountListItem>
           </UpcomingStockCardInfoAccountList>
         </UpcomingStockCardInfoItem>
       </UpcomingStockCardInfos>
-      {!!subscription && renderSubscription()}
+      {renderSubscription()}
     </UpcomingStockCardWarp>
   );
 };
@@ -173,10 +216,15 @@ const UpcomingStockCardInfoItem = styled.li`
 `;
 const UpcomingStockCardInfoAccountList = styled.ul``;
 const UpcomingStockCardInfoAccountListItem = styled.li`
+  display: flex;
+  align-items: center;
   & + & {
     margin-top: 3px;
   }
   ${getFonts("H6_REGULAR")}
+  span {
+    margin-right: 4px;
+  }
 `;
 const UpcomingStockCardWarp = styled.div`
   margin-top: 12px;
