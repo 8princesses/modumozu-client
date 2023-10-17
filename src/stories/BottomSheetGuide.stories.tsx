@@ -5,7 +5,7 @@ const meta = {
   title: "Common/BottomSheet/Guide",
   component: () => {
     return (
-      <BottomSheetGuide title="최소 청약증거금">
+      <BottomSheetGuide title="최소 청약증거금" handleClose={() => {}}>
         <p>
           공모주를 배정받기 위해 미리 내는 보증금이에요.
           <br />

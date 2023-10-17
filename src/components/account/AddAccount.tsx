@@ -35,7 +35,7 @@ const AddAccount: FC<AddAccountProps> = (props) => {
 
   return (
     <FullScreenModal visible={visible} setInvisible={setInvisible}>
-      <Description>
+      <FullScreenModalDescription>
         <h2>
           새로 개설한 증권 계좌를 <br />
           추가해주세요.
@@ -47,7 +47,7 @@ const AddAccount: FC<AddAccountProps> = (props) => {
             계좌 개설을 제한하고 있어요.
           </li>
         </ul>
-      </Description>
+      </FullScreenModalDescription>
       <section>
         <AddAccountButton
           onClick={() =>
@@ -80,7 +80,7 @@ const AddAccount: FC<AddAccountProps> = (props) => {
 
 export default AddAccount;
 
-const Description = styled.section`
+export const FullScreenModalDescription = styled.section`
   box-sizing: border-box;
   width: 310px;
   margin-bottom: 40px;
@@ -97,6 +97,11 @@ const Description = styled.section`
     list-style: disc;
     text-decoration: dotted;
     margin-left: 20px;
+  }
+
+  p {
+    ${getFonts("BODY1_REGULAR")}
+    color: ${colors.FONT_LIGHT.TERIARY};
   }
 `;
 

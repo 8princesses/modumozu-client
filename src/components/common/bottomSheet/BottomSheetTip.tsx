@@ -4,15 +4,26 @@ import Button from "../Button";
 import styled from "styled-components";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
-import getRelatedBankList from "@/util/getRelatedBankList";
 import { BottomSheetButton } from "./BottomSheetGuide";
+import { getRelatedBankList, getRelatedBankListCnt } from "@/util/getRelatedBankList";
 
 interface BottomSheetTipProps {
+  /**
+   * 증권사 이름
+   */
   investmentBankName: string;
+  /**
+   * 더보기 버튼 클릭 핸들러
+   */
+  handleButtonClick: () => void;
+  /**
+   * 닫기 버튼 클릭 핸들러
+   */
+  handleClose: () => void;
 }
 
 export const BottomSheetTip: FC<BottomSheetTipProps> = (props) => {
-  const { investmentBankName } = props;
+  const { investmentBankName, handleButtonClick, handleClose } = props;
   const relatedBanks: string[] = getRelatedBankList(investmentBankName);
   const relatedBanksText = relatedBanks.reduce(
     (acc, cur, idx) => (idx < relatedBanks.length - 1 ? acc + cur + ", " : acc + cur),
@@ -30,14 +41,14 @@ export const BottomSheetTip: FC<BottomSheetTipProps> = (props) => {
         </p>
         <RelatedBankList>{relatedBanksText} 앱</RelatedBankList>
         <p>
-          {investmentBankName} 외 N개 증권사들은 20일 이내에 계좌 개설 내역이 있을 경우, 신규 계좌 개설을 제한하지만
-          일부 증권사는 연계된 은행을 통해 제한없이 만들 수 있어요.
+          {investmentBankName} 외 {getRelatedBankListCnt() - 1} 개 증권사들은 20일 이내에 계좌 개설 내역이 있을 경우,
+          신규 계좌 개설을 제한하지만 일부 증권사는 연계된 은행을 통해 제한없이 만들 수 있어요.
         </p>
       </BottomSheetTipContent>
-      <Button color="secondary" width="100%" $font="BUTTON1_SEMIBOLD">
-        다른 증권사 제한해제 팁 더보기
-      </Button>
-      <BottomSheetButton color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR">
+      <MoreButton color="secondary" width="100%" $font="BUTTON1_SEMIBOLD" onClick={handleButtonClick}>
+        다른 증권사 팁 더보기
+      </MoreButton>
+      <BottomSheetButton color="secondary" fill={false} width="100%" $font="BUTTON1_REGULAR" onClick={handleClose}>
         닫기
       </BottomSheetButton>
     </>
@@ -59,6 +70,11 @@ const RelatedBankList = styled.div`
   padding: 20px;
   background-color: ${colors.GRAY[1]};
   border: 1px solid ${colors.GRAY[2]};
+  border-radius: 6px;
   color: ${colors.FONT_LIGHT.PRIMARY};
   ${getFonts("H5_SEMIBOLD")};
+`;
+
+const MoreButton = styled(Button)`
+  margin-bottom: 8px;
 `;
