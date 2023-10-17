@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { FC } from "react";
 import HeartIcon from "@/svg/HeartIcon";
 import styled from "styled-components";
@@ -10,6 +10,9 @@ import DangerIcon from "@/svg/DangerIcon";
 import Button from "../common/Button";
 import { getBankName } from "@/util/getBankName";
 import Badge from "../common/Badge";
+import { modifyInterestingStock } from "@/service/interestingApiService";
+import { useSetRecoilState } from "recoil";
+import { ToastAtom } from "@/recoil/toastState";
 
 interface UpcomingStockProps {
   children: ReactNode;
@@ -18,7 +21,6 @@ interface UpcomingStockStatusProps {
   startDate: string;
   endDate: string;
 }
-export type CardType = "B" | "C" | "D" | "E";
 interface UpcomingStockCardProps {
   id: number;
   category: string;
@@ -28,7 +30,7 @@ interface UpcomingStockCardProps {
   account: number[];
   nonRemainAccounts: number[];
   love: boolean;
-  cardType: CardType;
+  cardType: string;
   proposalAgent: number;
   proposalEndDate: string;
   onClick?: () => void;
@@ -41,11 +43,20 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate 
   const start = new Date(startDate);
   const end = new Date(endDate);
   const current = new Date();
+  const today = new Date(current.getFullYear() + "-" + (current.getMonth() + 1) + "-" + current.getDate());
 
   let diff = Math.abs(start.getTime() - current.getTime());
   diff = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
-  if (start < current) {
+  if (today < start) {
+    return (
+      <UpcomingStockStatusWrap>
+        <UpcomingStockStatusLabel color={colors.FONT_LIGHT.TERIARY}>D - {diff} </UpcomingStockStatusLabel>
+        <span>{`청약일 ${start.getMonth() + 1 + "월 " + start.getDate() + "일"}`}</span>
+      </UpcomingStockStatusWrap>
+    );
+  }
+  if (today <= end) {
     return (
       <UpcomingStockStatusWrap>
         <Dot />
@@ -54,12 +65,6 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate 
       </UpcomingStockStatusWrap>
     );
   }
-  return (
-    <UpcomingStockStatusWrap>
-      <UpcomingStockStatusLabel color={colors.FONT_LIGHT.TERIARY}>D - {diff} </UpcomingStockStatusLabel>
-      <span>{`청약일 ${start.getMonth() + 1 + "월 " + start.getDate() + "일"}`}</span>
-    </UpcomingStockStatusWrap>
-  );
 };
 const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
   const {
@@ -76,6 +81,8 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
     proposalAgent,
   } = props;
   const endDate = new Date(proposalEndDate);
+  const [pinned, setPinned] = useState(love);
+  const setToastString = useSetRecoilState(ToastAtom);
 
   const renderSubscription = () => {
     switch (cardType) {
@@ -126,10 +133,16 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
           <UpcomingStockCardTopCategory>{category}</UpcomingStockCardTopCategory>
           <UpcomingStockCardTopTitle>{title}</UpcomingStockCardTopTitle>
         </div>
-        {love && (
-          <div>
+        {pinned && (
+          <HeartButton
+            onClick={() => {
+              modifyInterestingStock(id);
+              setPinned((prev) => !prev);
+              setToastString("관심 공모주에서 삭제되었어요.");
+            }}
+          >
             <HeartIcon.fill color={colors.ON.PRIMARY} />
-          </div>
+          </HeartButton>
         )}
       </UpcomingStockCardTop>
       <UpcomingStockCardInfos>
@@ -258,6 +271,9 @@ const UpcomingStockSubscriptionDisableText = styled.span`
 const UpcomingStockSubscriptionDateText = styled.span`
   ${getFonts("H6_SEMIBOLD")}
   color: ${colors.FONT_LIGHT.PRIMARY};
+`;
+const HeartButton = styled.div`
+  cursor: pointer;
 `;
 export default Object.assign(UpcomingStockMain, {
   status: UpcomingStockStatus,

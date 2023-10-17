@@ -3,9 +3,9 @@ import { styled } from "styled-components";
 import { getFonts } from "@/styles/fonts";
 import TapMenu from "../common/TapMenu";
 import { useState } from "react";
-import UpcomingStock from "./UpcomingStock";
 import { fetchUpcomingStocks } from "@/service/homeApiService";
 import { useQuery } from "@tanstack/react-query";
+import StockList from "../common/StockList";
 
 const UpcomingStockSection = () => {
   const { isLoading, data } = useQuery({ queryKey: ["fetchUpcomingStocks"], queryFn: fetchUpcomingStocks });
@@ -35,26 +35,7 @@ const UpcomingStockSection = () => {
           },
         ]}
       />
-      <UpcomingStockList>
-        {!isLoading &&
-          upcomingStockData.map((data) => (
-            <UpcomingStockItem key={data.id}>
-              <UpcomingStock.status startDate={data.offerBeginAt} endDate={data.offerEndAt} />
-              <UpcomingStock.cardWrap
-                id={data.id}
-                title={data.name}
-                love={data.pinned}
-                category={data.category}
-                account={data.remainAgents}
-                nonRemainAccounts={data.nonRemainAgents}
-                price={[data.minDesiredOfferPrice, data.maxDesiredOfferPrice]}
-                cardType={data.proposal.cardType}
-                proposalAgent={data.proposal.agentId}
-                proposalEndDate={data.proposal.needAt}
-              />
-            </UpcomingStockItem>
-          ))}
-      </UpcomingStockList>
+      <StockList isLoading={isLoading} stockList={upcomingStockData} />
     </section>
   );
 };
@@ -69,19 +50,4 @@ const Title = styled.h1`
 const TitleWrapper = styled.div`
   margin-top: 32px;
   margin-bottom: 12px;
-`;
-
-const UpcomingStockList = styled.div`
-  background: linear-gradient(180deg, #f7f8f9 0%, #f7f8f9 93.35%, rgba(247, 248, 249, 0) 100%);
-  padding-bottom: 80px;
-  padding-inline: 16px;
-  min-height: 80vh;
-`;
-
-const UpcomingStockItem = styled.div`
-  margin-bottom: 32px;
-
-  &:first-child {
-    padding-top: 20px;
-  }
 `;

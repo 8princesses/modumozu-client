@@ -1,5 +1,5 @@
-import { CardType } from "@/components/home/UpcomingStock";
 import axios from "axios";
+import { StockInfoType } from "./interestingApiService";
 
 const API_BASE_URL = "https://api.modumozu.com/api/ipo/v1";
 
@@ -13,28 +13,7 @@ const client = axios.create({
 interface UpcomingStockType {
   totalIpoCount: number;
   activeIpoCount: number;
-  ipos: [
-    {
-      id: number;
-      pinned: boolean;
-      status: string;
-      offerBeginAt: string;
-      offerEndAt: string;
-      name: string;
-      category: string;
-      minDesiredOfferPrice: number;
-      maxDesiredOfferPrice: number;
-      fixedOfferPrice: number;
-      remainAgents: number[];
-      nonRemainAgents: number[];
-      proposal: {
-        cardType: CardType;
-        proposalTyp: string;
-        needAt: string;
-        agentId: number;
-      };
-    },
-  ];
+  ipos: StockInfoType[];
 }
 
 export const fetchUpcomingStocks = async (): Promise<UpcomingStockType> => {

@@ -1,32 +1,39 @@
 "use client";
 
+import StockList from "@/components/common/StockList";
 import TapMenu from "@/components/common/TapMenu";
+import Toast from "@/components/common/Toast";
+import { StockCountInfoType, StockInfoType, fetchInterestingStocks } from "@/service/interestingApiService";
 import { getFonts } from "@/styles/fonts";
 import HeartIcon from "@/svg/HeartIcon";
-import { FC, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
-type status = "ALL" | "READY" | "IN_PROGRESS" | "DONE";
+type status = "TOTAL" | "READY" | "IN_PROGRESS" | "DONE";
 
-type Subscription = "disable" | "able" | "limit";
-
-interface DummyInterestingStockType {
-  id: string;
-  title: string;
-  love: boolean;
-  category: string;
-  account: string;
-  minPrice: number;
-  maxPrice: number;
-  subscription?: Subscription;
-  subscriptionDueDate: string;
-  accountDueDate: string;
-}
+const emptyCountInfo = {
+  total: 0,
+  ready: 0,
+  inProgress: 0,
+  done: 0,
+};
 
 const MyPage: FC = () => {
-  const [menuState, setMenuState] = useState<status>("ALL");
+  const [menuState, setMenuState] = useState<status>("TOTAL");
+  const { isLoading, data } = useQuery({
+    queryKey: ["fetchInterestingStocks"],
+    queryFn: fetchInterestingStocks,
+  });
+  const [interestingStockCount, setInterestingStockCount] = useState<StockCountInfoType>(emptyCountInfo);
+  const [interestingStockList, setInterestingStockList] = useState<StockInfoType[]>([]);
+  const visibleStocks =
+    menuState === "TOTAL" ? interestingStockList : interestingStockList.filter((ipo) => ipo.status === menuState);
 
-  const dummyInterestingStocks: DummyInterestingStockType[] = [];
+  useEffect(() => {
+    setInterestingStockList(data?.ipos ?? []);
+    setInterestingStockCount(data?.count ?? emptyCountInfo);
+  }, [data]);
 
   return (
     <>
@@ -34,19 +41,21 @@ const MyPage: FC = () => {
         onChange={setMenuState}
         value={menuState}
         options={[
-          { label: "전체 0", value: "ALL" },
-          { label: "청약전 0", value: "READY" },
-          { label: "청약중 0", value: "IN_PROGRESS" },
-          { label: "청약종료 0", value: "DONE" },
+          { label: "전체 " + interestingStockCount.total, value: "TOTAL" },
+          { label: "청약전 " + interestingStockCount.ready, value: "READY" },
+          { label: "청약중 " + interestingStockCount.inProgress, value: "IN_PROGRESS" },
+          { label: "청약종료 " + interestingStockCount.done, value: "DONE" },
         ]}
       />
-      {/* TODO : 데이터 있으면 UpComingStock 카드 재활용 */}
-      {dummyInterestingStocks.length === 0 ? (
+      {visibleStocks.length === 0 ? (
         <EmptyInterestingStockList>
           <HeartIcon.fill width={80} height={80} />
           <h3>아직 관심 공모주가 없어요.</h3>
         </EmptyInterestingStockList>
-      ) : null}
+      ) : (
+        <StockList isLoading={isLoading} stockList={visibleStocks} />
+      )}
+      <Toast />
     </>
   );
 };

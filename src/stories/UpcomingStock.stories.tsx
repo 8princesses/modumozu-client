@@ -24,14 +24,19 @@ export const Type_A: Story = {
   args: {
     children: (
       <>
-        <UpcomingStock.status status={true}>gd</UpcomingStock.status>
+        <UpcomingStock.status startDate="2023-10-16" endDate="2023-10-17" />
         <UpcomingStock.cardWrap
+          id={2}
           title="에이치엠씨아이비스팩6호"
           love={true}
           category="의료장비 및 서비스"
-          account="대신증권"
+          account={[2]}
+          nonRemainAccounts={[]}
           price={[26000, 31000]}
-          subscription="limit"
+          cardType="A"
+          proposalAgent={2}
+          proposalEndDate="2023-10-10"
+          onClick={() => {}}
         >
           안뇽
         </UpcomingStock.cardWrap>
@@ -39,18 +44,24 @@ export const Type_A: Story = {
     ),
   },
 };
+
 export const Type_B: Story = {
   args: {
     children: (
       <>
-        <UpcomingStock.status status={true}>gd</UpcomingStock.status>
+        <UpcomingStock.status startDate="2023-10-16" endDate="2023-10-17" />
         <UpcomingStock.cardWrap
+          id={2}
           title="에이치엠씨아이비스팩6호"
-          love={false}
+          love={true}
           category="의료장비 및 서비스"
-          account="대신증권"
+          account={[2]}
+          nonRemainAccounts={[]}
           price={[26000, 31000]}
-          subscription="limit"
+          cardType="B"
+          proposalAgent={2}
+          proposalEndDate="2023-10-10"
+          onClick={() => {}}
         >
           안뇽
         </UpcomingStock.cardWrap>
@@ -58,19 +69,24 @@ export const Type_B: Story = {
     ),
   },
 };
+
 export const Type_C: Story = {
   args: {
     children: (
       <>
-        <UpcomingStock.status status={true}>gd</UpcomingStock.status>
+        <UpcomingStock.status startDate="2023-10-16" endDate="2023-10-17" />
         <UpcomingStock.cardWrap
+          id={2}
           title="에이치엠씨아이비스팩6호"
           love={true}
           category="의료장비 및 서비스"
-          account="대신증권"
+          account={[2]}
+          nonRemainAccounts={[]}
           price={[26000, 31000]}
-          subscription="able"
-          date="3월 12일"
+          cardType="C"
+          proposalAgent={2}
+          proposalEndDate="2023-10-10"
+          onClick={() => {}}
         >
           안뇽
         </UpcomingStock.cardWrap>
@@ -78,19 +94,24 @@ export const Type_C: Story = {
     ),
   },
 };
+
 export const Type_D: Story = {
   args: {
     children: (
       <>
-        <UpcomingStock.status status={true}>gd</UpcomingStock.status>
+        <UpcomingStock.status startDate="2023-10-16" endDate="2023-10-17" />
         <UpcomingStock.cardWrap
+          id={2}
           title="에이치엠씨아이비스팩6호"
           love={true}
           category="의료장비 및 서비스"
-          account="대신증권"
+          account={[2]}
+          nonRemainAccounts={[]}
           price={[26000, 31000]}
-          subscription="disable"
-          date="3월 12일"
+          cardType="D"
+          proposalAgent={2}
+          proposalEndDate="2023-10-10"
+          onClick={() => {}}
         >
           안뇽
         </UpcomingStock.cardWrap>

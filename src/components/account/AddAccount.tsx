@@ -69,6 +69,7 @@ const AddAccount: FC<AddAccountProps> = (props) => {
             addMyAccounts(accounts.filter((item) => item.agentId > 0 && item.registeredAt.length > 0));
             window.location.reload();
           }}
+          $font="BUTTON1_SEMIBOLD"
         >
           추가 완료
         </Button>
