@@ -20,8 +20,8 @@
   font-size: 12px;
   line-height: 16px;
   padding: 8px 9.5px 8px 9.5px;
-  width: 13px;
-  height: 16px;
+  width: 32px;
+  height: 32px;
   color: #858585;
   margin: 0;
 }
@@ -30,9 +30,10 @@
   font-size: 12px;
   line-height: 16px;
   padding: 8px 9.5px 8px 9.5px;
-  width: 13px;
-  height: 16px;
+  width: 32px;
+  height: 32px;
   margin: 0;
+  text-align: center;
 }
 
 .react-datepicker__header {
