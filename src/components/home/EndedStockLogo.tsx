@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import companyLogo from "../../../public/images/company_logo.png";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
-import BankIcon from "@/svg/BankIcon";
+import NoUi from "@/svg/NoUi";
 
 interface LogoProps {
   path: string;
@@ -17,11 +17,7 @@ const EndedStockLogo: FC<LogoProps> = (props) => {
   return (
     <LogoImage>
       {isPublic && <Overlay>상장 완료</Overlay>}
-      {path.length > 0 ? (
-        <Image src={logoPath} width="100" height="100" alt="company logo" />
-      ) : (
-        <BankIcon width={80} height={80} />
-      )}
+      {path.length > 0 ? <Image src={logoPath} width="100" height="100" alt="company logo" /> : <NoUi />}
     </LogoImage>
   );
 };
