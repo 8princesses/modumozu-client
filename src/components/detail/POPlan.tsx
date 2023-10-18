@@ -2,7 +2,7 @@
 
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
-import CheckBackground from "@/svg/CheckBackground";
+import CheckIcon from "@/svg/CheckIcon";
 import IngIcon from "@/svg/IngIcon";
 import styled from "styled-components";
 import dayjs, { Dayjs } from "dayjs";
@@ -90,7 +90,7 @@ const POPlan = () => {
   const renderProcessIcon = (status: MarkStatus, index: number) => {
     switch (status) {
       case "pass":
-        return <CheckBackground />;
+        return <CheckIcon.background />;
       case "ing":
         return <IngIcon />;
       default:

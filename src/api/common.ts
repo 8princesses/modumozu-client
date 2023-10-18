@@ -1,8 +1,14 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { getStorage } from "@/util/storage";
+import axios from "axios";
 
-const instance = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  headers: {
+    Authorization: `Bearer ${getStorage("ACCESS_TOKEN")}`,
+  },
+});
 
-instance.interceptors.request.use(
+api.interceptors.request.use(
   (instance) => {
     return instance;
   },
@@ -10,7 +16,7 @@ instance.interceptors.request.use(
     throw new Error(error);
   },
 );
-instance.interceptors.response.use(
+api.interceptors.response.use(
   (instance) => {
     return instance;
   },
@@ -19,4 +25,4 @@ instance.interceptors.response.use(
   },
 );
 
-export default instance;
+export default api;
