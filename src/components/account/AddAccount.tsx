@@ -5,8 +5,9 @@ import { getFonts } from "@/styles/fonts";
 import PlusIcon from "@/svg/PlusIcon";
 import Button from "../common/Button";
 import AddAccountBoxList from "./AddAccountBoxList";
-import { addMyAccounts } from "@/service/apiService";
 import FullScreenModal from "../common/FullScreenModal";
+import { AgentRegisterType } from "@/types";
+import { addMyAccounts } from "@/api/account";
 
 interface AddAccountProps {
   /**
@@ -17,11 +18,6 @@ interface AddAccountProps {
    * 모달 창 끄기
    */
   setInvisible: () => void;
-}
-
-export interface AgentRegisterType {
-  agentId: number;
-  registeredAt: string;
 }
 
 const emptyAgent: AgentRegisterType = {

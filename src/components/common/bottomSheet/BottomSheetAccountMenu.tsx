@@ -4,9 +4,10 @@ import styled from "styled-components";
 import Button from "../Button";
 import { FC, useState } from "react";
 import SelectDate from "@/components/account/SelectDate";
-import { deleteMyAccount, myAccountType } from "@/service/apiService";
 import SmallModalBox from "../SmallModalBox";
 import { ModalData, initalModalData } from "@/components/mypage/MenuSection";
+import { myAccountType } from "@/types";
+import { deleteMyAccount } from "@/api/account";
 
 interface BottomSheetAccountMenuProps {
   /**

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import { getFonts } from "@/styles/fonts";
 import EndedStock from "./EndedStock";
-import { fetchEndedStocks } from "@/service/homeApiService";
 import { useQuery } from "@tanstack/react-query";
+import { fetchEndedStocks } from "@/api/ipo";
 
 const EndedStockSection: FC = () => {
   const { isLoading, data } = useQuery({ queryKey: ["fetchEndedStocks"], queryFn: fetchEndedStocks });

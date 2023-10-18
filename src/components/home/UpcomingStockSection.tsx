@@ -3,9 +3,9 @@ import { styled } from "styled-components";
 import { getFonts } from "@/styles/fonts";
 import TapMenu from "../common/TapMenu";
 import { useState } from "react";
-import { fetchUpcomingStocks } from "@/service/homeApiService";
 import { useQuery } from "@tanstack/react-query";
 import StockList from "../common/StockList";
+import { fetchUpcomingStocks } from "@/api/ipo";
 
 const UpcomingStockSection = () => {
   const { isLoading, data } = useQuery({ queryKey: ["fetchUpcomingStocks"], queryFn: fetchUpcomingStocks });

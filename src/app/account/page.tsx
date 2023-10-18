@@ -1,7 +1,7 @@
 "use client";
+import { fetchMyAccounts } from "@/api/account";
 import Accounts from "@/components/account/Accounts";
 import { NoAccount } from "@/components/account/NoAccount";
-import { fetchMyAccounts } from "@/service/apiService";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 

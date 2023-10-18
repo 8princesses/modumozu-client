@@ -6,11 +6,11 @@ import getInvestmentBankLogo from "@/util/getInvestmentBankLogo";
 import Image from "next/image";
 import styled from "styled-components";
 import Button from "../common/Button";
-import { myAccountType } from "@/service/apiService";
 import { FC, useState } from "react";
 import AddAccount from "./AddAccount";
 import { BottomSheet } from "../common/bottomSheet/BottomSheet";
 import BottomSheetAccountMenu from "../common/bottomSheet/BottomSheetAccountMenu";
+import { myAccountType } from "@/types";
 
 interface AccountsProps {
   myAccounts: myAccountType[];

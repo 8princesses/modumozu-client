@@ -16,7 +16,7 @@ const EndedStockLogo: FC<LogoProps> = (props) => {
   const logoPath = path.length > 0 ? path : companyLogo;
   return (
     <LogoImage>
-      {!isPublic && <Overlay>상장 예정</Overlay>}
+      {isPublic && <Overlay>상장 완료</Overlay>}
       {path.length > 0 ? (
         <Image src={logoPath} width="100" height="100" alt="company logo" />
       ) : (

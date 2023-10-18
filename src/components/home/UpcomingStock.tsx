@@ -10,9 +10,9 @@ import DangerIcon from "@/svg/DangerIcon";
 import Button from "../common/Button";
 import { getBankName } from "@/util/getBankName";
 import Badge from "../common/Badge";
-import { modifyInterestingStock } from "@/service/interestingApiService";
 import { useSetRecoilState } from "recoil";
 import { ToastAtom } from "@/recoil/toastState";
+import { modifyInterestingStock } from "@/api/interesting";
 
 interface UpcomingStockProps {
   children: ReactNode;

@@ -1,11 +1,12 @@
 "use client";
 
+import { fetchInterestingStocks } from "@/api/interesting";
 import StockList from "@/components/common/StockList";
 import TapMenu from "@/components/common/TapMenu";
 import Toast from "@/components/common/Toast";
-import { StockCountInfoType, StockInfoType, fetchInterestingStocks } from "@/service/interestingApiService";
 import { getFonts } from "@/styles/fonts";
 import HeartIcon from "@/svg/HeartIcon";
+import { StockCountInfoType, StockInfoType } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";

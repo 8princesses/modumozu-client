@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import UpcomingStock from "../home/UpcomingStock";
 import { FC, useState } from "react";
-import { StockInfoType } from "@/service/interestingApiService";
 import { BottomSheet } from "./bottomSheet/BottomSheet";
 import { BottomSheetTip } from "./bottomSheet/BottomSheetTip";
 import { getBankName } from "@/util/getBankName";
@@ -11,6 +10,7 @@ import { getRelatedBankListCnt, getRelatedBankMap } from "@/util/getRelatedBankL
 import RelatedBankBox from "./RelatedBankBox";
 import { getFonts } from "@/styles/fonts";
 import colors from "@/styles/colors";
+import { StockInfoType } from "@/types";
 
 interface StockListProps {
   isLoading: boolean;
