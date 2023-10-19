@@ -13,7 +13,7 @@ const RelatedBankBox = ({ name }: { name: string }) => {
       </BoxTitle>
       <BoxContent>
         {getRelatedBankList(name).map((item, idx) => (
-          <span key={name}>{(idx !== 0 ? ", " : "") + item}</span>
+          <span key={item}>{(idx !== 0 ? ", " : "") + item}</span>
         ))}
       </BoxContent>
     </BoxWrapper>
