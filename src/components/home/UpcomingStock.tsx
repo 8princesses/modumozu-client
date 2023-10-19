@@ -148,7 +148,11 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
       <UpcomingStockCardInfos>
         <UpcomingStockCardInfoItem>
           <MoneyIcon />
-          <span>{`${price[0].toLocaleString()}원 ~ ${price[1].toLocaleString()}원`}</span>
+          <span>
+            {price[0] === 0 || price[1] === 0
+              ? "공모가 확인 중"
+              : `${price[0].toLocaleString()}원 ~ ${price[1].toLocaleString()}원`}
+          </span>
         </UpcomingStockCardInfoItem>
         <UpcomingStockCardInfoItem>
           <BankIcon />
