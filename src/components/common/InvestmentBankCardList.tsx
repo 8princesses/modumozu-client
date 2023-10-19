@@ -3,19 +3,34 @@ import { getFonts } from "@/styles/fonts";
 import colors from "@/styles/colors";
 import Image from "next/image";
 import getInvestmentBankLogo from "@/util/getInvestmentBankLogo";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { getBankName } from "@/util/getBankName";
+import { limitlessAgent } from "@/constants/agentInfo";
+import getStoreUrl from "@/util/getStoreUrl";
 
 interface InvestmentBankCardListProps {
+  /**
+   * 증권사 ID 리스트
+   */
   investmentBanks: number[];
+  /**
+   * 증권사 버튼 클릭 핸들러
+   */
+  handleClick: Dispatch<SetStateAction<number>>;
 }
 
 const InvestmentBankCardList: FC<InvestmentBankCardListProps> = (props) => {
-  const { investmentBanks } = props;
+  const { investmentBanks, handleClick } = props;
   return (
     <ListWrapper>
       {investmentBanks.map((bankId) => (
-        <InvestmentBankCard key={bankId}>
+        <InvestmentBankCard
+          key={bankId}
+          onClick={() => {
+            // 20일 제한없는 주간사일경우 바로 스토어로 이동
+            limitlessAgent.includes(bankId) ? window.open(getStoreUrl(bankId)) : handleClick(bankId);
+          }}
+        >
           <Image src={getInvestmentBankLogo(bankId)} width="60" height="60" alt={String(bankId)} />
           {getBankName(bankId)}
         </InvestmentBankCard>

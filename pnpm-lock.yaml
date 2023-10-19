@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@storybook/addon-viewport':
     specifier: ^7.4.0
@@ -28,6 +32,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.13
     version: 13.4.13(eslint@8.47.0)(typescript@5.1.6)
+  korean-business-day:
+    specifier: ^3.1.0
+    version: 3.1.0
   next:
     specifier: 13.4.13
     version: 13.4.13(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
@@ -9111,6 +9118,10 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /korean-business-day@3.1.0:
+    resolution: {integrity: sha512-T2iiXVL8Qp+xomeMkLKYmFXkqZVdriG007DxlHHZEFRS5ytfaK4taE9qycKSlXXnKv2rU2kCEvRZT/Xrodhdmg==}
+    dev: false
+
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: false
@@ -12452,7 +12463,3 @@ packages:
 
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

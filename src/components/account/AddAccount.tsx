@@ -99,6 +99,10 @@ export const FullScreenModalDescription = styled.section`
     ${getFonts("BODY1_REGULAR")}
     color: ${colors.FONT_LIGHT.TERIARY};
   }
+
+  span {
+    color: ${colors.FONT.PRIMARY};
+  }
 `;
 
 const AddAccountButton = styled.button`

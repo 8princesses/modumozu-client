@@ -158,7 +158,7 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
                 <>
                   <span>
                     {account.slice(0, 2).map((id) => getBankName(id)) +
-                      (account.length > 2 ? `외 ${account.length - 2}개` : "")}
+                      (account.length > 2 ? ` 외 ${account.length - 2}개` : "")}
                   </span>
                   <Badge type="primary">보유</Badge>
                 </>
@@ -169,7 +169,7 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
                 <>
                   <span>
                     {nonRemainAccounts.slice(0, 2).map((id) => getBankName(id)) +
-                      (nonRemainAccounts.length > 2 ? `외 ${nonRemainAccounts.length - 2}개` : "")}
+                      (nonRemainAccounts.length > 2 ? ` 외 ${nonRemainAccounts.length - 2}개` : "")}
                   </span>
                   <Badge type="secondary">미보유</Badge>
                 </>
