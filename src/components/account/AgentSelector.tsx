@@ -7,7 +7,7 @@ import { BottomSheetTitle } from "../common/bottomSheet/BottomSheetTitle";
 import Button from "../common/Button";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import CircledCheckIcon from "@/svg/CircledCheckIcon";
-import { AgentRegisterType } from "./AddAccount";
+import { AgentRegisterType } from "@/types";
 
 interface AgentSelectorProps {
   setAccounts: Dispatch<SetStateAction<AgentRegisterType[]>>;

@@ -3,9 +3,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
 import "@/styles/datepicker.css";
-import { AgentRegisterType } from "../account/AddAccount";
 import CaretIcon from "@/svg/CaretIcon";
 import colors from "@/styles/colors";
+import { AgentRegisterType } from "@/types";
 
 interface CustomDatePickerProps {
   boxIdx: number;

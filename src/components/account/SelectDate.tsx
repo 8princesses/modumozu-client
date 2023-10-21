@@ -6,7 +6,7 @@ import { BottomSheet } from "../common/bottomSheet/BottomSheet";
 import { BottomSheetTitle } from "../common/bottomSheet/BottomSheetTitle";
 import colors from "@/styles/colors";
 import { useState } from "react";
-import { AgentRegisterType } from "@/types";
+import { AgentRegisterType, myAccountType } from "@/types";
 import { modifyMyAccount } from "@/api/account";
 
 interface SelectDateProps {

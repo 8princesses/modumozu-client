@@ -4,11 +4,11 @@ import { getFonts } from "@/styles/fonts";
 import CircledXIcon from "@/svg/CircledXIcon";
 import styled from "styled-components";
 import { Dispatch, FC, SetStateAction, useState } from "react";
-import { AgentRegisterType } from "./AddAccount";
 import { BottomSheet } from "../common/bottomSheet/BottomSheet";
 import AgentSelector from "./AgentSelector";
 import { getBankName } from "@/util/getBankName";
 import CustomDatePicker from "../common/CustomDatePicker";
+import { AgentRegisterType } from "@/types";
 
 interface AddAccountBoxListProps {
   accounts: AgentRegisterType[];
