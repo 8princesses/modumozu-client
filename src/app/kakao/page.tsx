@@ -51,7 +51,7 @@ const Kakao = () => {
     if (!token) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   return (
     <BottomSheet visible={true} handleOverlayClick={() => {}}>

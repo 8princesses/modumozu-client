@@ -2,13 +2,14 @@
 
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
+import Image from "next/image";
 import styled from "styled-components";
 
 const Main = () => {
   return (
     <MainWrap>
       <MainContentWrap>
-        <img src="/images/logo_1.png" width="157px" />
+        <Image src="/images/logo_1.png" width={157} height={157} alt="logo" />
         <MainTitle>모두를 위한 공모주</MainTitle>
         <MainDescription>복잡한 신청 과정을 한 큐에! 누구나 쉽게 시작하는 공모주</MainDescription>
       </MainContentWrap>

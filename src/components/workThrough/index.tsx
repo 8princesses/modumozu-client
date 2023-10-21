@@ -8,6 +8,7 @@ import Button from "../common/Button";
 import WorkThroughContent from "./WorkThroughContent";
 import KakaoLoginButton from "./KakaoLoginButton";
 import WorkThroughMain from "./WorkThroughMain";
+import Image from "next/image";
 
 const WorkThrough = () => {
   const [step, setStep] = useState(1);
@@ -24,7 +25,7 @@ const WorkThrough = () => {
         return (
           <WorkThroughContent
             header={<Description>보유 계좌를 선택하면,</Description>}
-            content={<img src="/images/step_1.png" width="100%" />}
+            content={<Image src="/images/step_1.png" width={262} height={556} alt="step1" />}
           />
         );
       case 3:
@@ -38,7 +39,7 @@ const WorkThrough = () => {
                 <br />한 눈에 알 수 있어요
               </Description>
             }
-            content={<img src="/images/step_2.png" width="100%" />}
+            content={<Image src="/images/step_2.png" width={262} height={556} alt="step2" />}
           />
         );
       case 4:
@@ -53,7 +54,7 @@ const WorkThrough = () => {
                 안내해드려요
               </Description>
             }
-            content={<img src="/images/step_3.png" width="100%" />}
+            content={<Image src="/images/step_3.png" width={262} height={556} alt="step3" />}
           />
         );
       default:
