@@ -87,10 +87,11 @@ const getStoreUrl = (agentId: number) => {
     [23, "https://play.google.com/store/apps/details?id=com.bridgefn.mtsplus&pcampaignid=web_share"],
   ]);
 
-  if (window.navigator.userAgent.match(/Apple/i)) {
-    return iosLink.get(agentId) ?? "";
+  if (window.navigator.userAgent.match(/Windows|Android/i)) {
+    return googleLink.get(agentId) ?? "";
   }
-  return googleLink.get(agentId) ?? "";
+  return iosLink.get(agentId) ?? "";
+
 };
 
 export default getStoreUrl;
