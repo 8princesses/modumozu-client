@@ -13,9 +13,14 @@ import styled from "styled-components";
 const Kakao = () => {
   const router = useRouter();
   const [agreedTerms, setAgreeTerms] = useState<number[]>([]);
+  const searchParams = new URL(window.location.href).searchParams;
+  const status = searchParams.get("status");
+
+  if (status !== "ready") {
+    router.push("/home");
+  }
 
   const setTokens = () => {
-    const searchParams = new URL(window.location.href).searchParams;
     const accessToken = searchParams.get("accessToken");
     const refreshToken = searchParams.get("refreshToken");
 

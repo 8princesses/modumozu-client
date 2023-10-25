@@ -14,7 +14,7 @@ const myFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Modumozu",
+  title: "모두모주",
   description: "Modumozu",
 };
 
