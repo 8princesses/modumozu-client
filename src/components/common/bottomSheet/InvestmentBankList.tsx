@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import { BottomSheetTitle } from "./BottomSheetTitle";
 import InvestmentBankCardList from "../InvestmentBankCardList";
 import { BottomSheetButton } from "./BottomSheetGuide";
@@ -19,7 +19,7 @@ interface InvestmentBankListProps {
   /**
    * 증권사 버튼 클릭 핸들러
    */
-  handleClick: Dispatch<SetStateAction<number>>;
+  handleClick: (id: number) => void;
 }
 
 const InvestmentBankList: FC<InvestmentBankListProps> = (props) => {

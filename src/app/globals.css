@@ -105,6 +105,7 @@ div::-webkit-scrollbar {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 article,

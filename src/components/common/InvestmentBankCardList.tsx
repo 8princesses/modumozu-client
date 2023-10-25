@@ -3,7 +3,7 @@ import { getFonts } from "@/styles/fonts";
 import colors from "@/styles/colors";
 import Image from "next/image";
 import getInvestmentBankLogo from "@/util/getInvestmentBankLogo";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import { getBankName } from "@/util/getBankName";
 import { limitlessAgent } from "@/constants/agentInfo";
 import getStoreUrl from "@/util/getStoreUrl";
@@ -16,7 +16,7 @@ interface InvestmentBankCardListProps {
   /**
    * 증권사 버튼 클릭 핸들러
    */
-  handleClick: Dispatch<SetStateAction<number>>;
+  handleClick: (id: number) => void;
 }
 
 const InvestmentBankCardList: FC<InvestmentBankCardListProps> = (props) => {

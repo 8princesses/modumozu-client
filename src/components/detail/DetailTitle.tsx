@@ -3,7 +3,6 @@
 import { Status } from "@/dto/detail";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
-import CaretIcon from "@/svg/CaretIcon";
 import dayjs from "dayjs";
 import { FC } from "react";
 import styled from "styled-components";

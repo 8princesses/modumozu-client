@@ -13,6 +13,7 @@ import POInfo from "@/components/detail/POInfo";
 import queryKeys from "@/constants/queryKeys";
 import { useQuery } from "@tanstack/react-query";
 import { NextPage } from "next";
+import { useRef } from "react";
 
 
 interface DetailProps {
@@ -22,12 +23,23 @@ interface DetailProps {
 const Detail: NextPage<DetailProps> = ({ params }) => {
   const id = params.id;
 
+  const investCompetitionBox = useRef<HTMLDivElement>(null);
+  const ipoConfirmBox = useRef<HTMLDivElement>(null);
   const { data, isLoading } = useQuery(queryKeys.DETAIL, () => {
     return getDetailById(id);
   });
   const { data: news = [], isLoading: isNewsLoading } = useQuery(queryKeys.NEWS, () => {
     return getDetailNewsById(id);
   });
+  const getAgentIdList = (): number[] => {
+    if (data) {
+      return data.remainAgents.concat(data.nonRemainAgents).map((agent) => {
+        return agent;
+      });
+    }
+    return [];
+  };
+
   const buildMandatoryHoldingCommitmentRate = () => {
     if (data) {
       return [
@@ -41,6 +53,16 @@ const Detail: NextPage<DetailProps> = ({ params }) => {
       ];
     }
     return [];
+  };
+  const handleScrollInvestCompetitionClick = () => {
+    if (investCompetitionBox.current) {
+      investCompetitionBox.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const handleScrollIpoConfirmBoxClick = () => {
+    if (ipoConfirmBox.current) {
+      ipoConfirmBox.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   if (data === undefined || isLoading) {
@@ -60,12 +82,17 @@ const Detail: NextPage<DetailProps> = ({ params }) => {
       <DetailCard.wrapper>
         <DetailCard.item>
           <IPOInfo
+            status={data.status}
             nonRemainAgents={data.nonRemainAgents}
             remainAgents={data.remainAgents}
-            publicOfferingTotalPrice={data.publicOfferingTotalPrice}
+            minDesiredOfferPrice={data.minDesiredOfferPrice}
+            maxDesiredOfferPrice={data.maxDesiredOfferPrice}
+            fixedOfferPrice={data.fixedOfferPrice}
             subscriptionDepositRate={data.subscriptionDepositRate}
             investorCompetitionRate={data.investorCompetitionRate}
             mandatoryHoldingCommitmentRate={data.mandatoryHoldingCommitmentRate}
+            onScrollInvestCompetitionClick={handleScrollInvestCompetitionClick}
+            onScrollIpoConfirmBoxClick={handleScrollIpoConfirmBoxClick}
           />
         </DetailCard.item>
         <DetailCard.item>
@@ -87,14 +114,20 @@ const Detail: NextPage<DetailProps> = ({ params }) => {
           />
         </DetailCard.item>
         <DetailCard.item>
-          <InvestCompetition investorCompetitionRate={data.investorCompetitionRate} />
+          <InvestCompetition ref={investCompetitionBox} investorCompetitionRate={data.investorCompetitionRate} />
         </DetailCard.item>
         <DetailCard.item>
           <IPOConfirm
+            ref={ipoConfirmBox}
             mandatoryHoldingCommitmentRate={data.mandatoryHoldingCommitmentRate}
             data={buildMandatoryHoldingCommitmentRate()}
           />
-          <DetailBottomButton proposal={data.proposal} offerBeginAt={data.offerBeginAt} offerEndAt={data.offerEndAt} />
+          <DetailBottomButton
+            ipoName={data.name}
+            agentIdList={getAgentIdList()}
+            proposal={data.proposal}
+            offerBeginAt={data.offerBeginAt}
+          />
         </DetailCard.item>
       </DetailCard.wrapper>
     </>
