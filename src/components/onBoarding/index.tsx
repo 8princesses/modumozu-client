@@ -194,7 +194,7 @@ const OnBoarding = () => {
     if (step === 2) {
       setSelectedAgentNumber(buildSelectedAgentList());
     }
-  }, [step]);
+  }, [step, buildSelectedAgentList]);
 
   return (
     <OnboardingWrap>

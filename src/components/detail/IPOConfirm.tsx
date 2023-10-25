@@ -57,6 +57,7 @@ const IPOConfirm = forwardRef<HTMLDivElement, IPOConfirmProps>(({ data = [], man
     </IPOConfirmWrap>
   );
 });
+IPOConfirm.displayName = "IPOConfirm";
 
 export default IPOConfirm;
 

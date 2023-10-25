@@ -22,6 +22,7 @@ const InvestCompetition = forwardRef<HTMLDivElement, InvestCompetitionProps>(({ 
     </InvestCompetitionWrap>
   );
 });
+InvestCompetition.displayName = "InvestCompetition";
 
 export default InvestCompetition;
 
