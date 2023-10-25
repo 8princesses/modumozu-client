@@ -7,11 +7,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchEndedStocks } from "@/api/ipo";
 import { EndedStockType } from "@/types";
 import queryKeys from "@/constants/queryKeys";
+import { useRouter } from "next/navigation";
 
 const EndedStockSection: FC = () => {
   const [page, setPage] = useState(0);
   const [stocks, setStocks] = useState<EndedStockType[]>([]);
   const { isLoading, data } = useQuery({ queryKey: [...queryKeys.ENDED, page], queryFn: () => fetchEndedStocks(page) });
+  const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -29,6 +31,7 @@ const EndedStockSection: FC = () => {
             stockName={stock.name}
             logoPath={stock.logo}
             openDate={new Date(stock.listingAt)}
+            onClick={() => router.push(`/detail/${stock.id}`)}
           />
         ))}
       </EndedStockList>

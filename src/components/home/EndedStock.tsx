@@ -8,16 +8,17 @@ interface EndStockProps {
   stockName: string;
   logoPath: string;
   openDate: Date;
+  onClick?: () => void;
 }
 
 const EndedStock: FC<EndStockProps> = (props) => {
-  const { stockName, logoPath, openDate } = props;
+  const { stockName, logoPath, openDate, onClick } = props;
   const today = new Date();
   const curDate = new Date(today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
   const isPublic = curDate > openDate;
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <EndedStockLogo isPublic={isPublic} path={logoPath} />
       <Title>{stockName}</Title>
       <Description color={colors.FONT_LIGHT.SECONDARY}>

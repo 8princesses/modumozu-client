@@ -13,6 +13,7 @@ import Badge from "../common/Badge";
 import { useSetRecoilState } from "recoil";
 import { ToastAtom } from "@/recoil/toastState";
 import { modifyInterestingStock } from "@/api/interesting";
+import { getDiffDate } from "@/util/getDiffDate";
 
 interface UpcomingStockProps {
   children: ReactNode;
@@ -45,9 +46,7 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate 
   const end = new Date(endDate);
   const current = new Date();
   const today = new Date(current.getFullYear() + "-" + (current.getMonth() + 1) + "-" + current.getDate());
-
-  let diff = Math.abs(start.getTime() - current.getTime());
-  diff = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  const diff = getDiffDate(startDate);
 
   if (today < start) {
     return (

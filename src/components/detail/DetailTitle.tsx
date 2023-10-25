@@ -3,6 +3,7 @@
 import { Status } from "@/dto/detail";
 import colors from "@/styles/colors";
 import { getFonts } from "@/styles/fonts";
+import { getDiffDate } from "@/util/getDiffDate";
 import dayjs from "dayjs";
 import { FC } from "react";
 import styled from "styled-components";
@@ -24,15 +25,15 @@ const DetailTitle: FC<DetailTitleProps> = (props) => {
 
     switch (status) {
       case "READY":
-        const isBefore = today.diff(offerBeginAt, "day") + 1;
-        return <span>D-{isBefore}</span>;
+        const isBefore = getDiffDate(offerBeginAt);
+        return <span>D - {isBefore}</span>;
       case "IN_PROGRESS":
         return <InPregressText>&bull; 진행 중</InPregressText>;
       case "DONE":
         const isBeforeListing = today.isBefore(dayjs(listingAt));
         if (isBeforeListing) {
-          const afterDayFromDone = today.diff(dayjs(offerEndAt)) + 1;
-          return <span>상장 종료+{afterDayFromDone}</span>;
+          const afterDayFromDone = getDiffDate(offerEndAt);
+          return <span>청약 종료 D+{afterDayFromDone}</span>;
         }
         return <ListingText>상장 완료</ListingText>;
       default:

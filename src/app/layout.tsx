@@ -15,7 +15,7 @@ const myFont = localFont({
 
 export const metadata: Metadata = {
   title: "모두모주",
-  description: "Modumozu",
+  description: "모두를 위한 공모주",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
