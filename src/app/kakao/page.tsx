@@ -51,7 +51,7 @@ const Kakao = () => {
     const token = searchParams.get("accessToken");
     const status = searchParams.get("status");
 
-    if (status === "ready") {
+    if (status === "READY" || status === "ready") {
       setIsNewMember(true);
     } else {
       setTokens();
