@@ -109,30 +109,32 @@ const Detail: NextPage<DetailProps> = ({ params }) => {
           />
         </DetailCard.item>
         {tabState && (
-          <DetailCard.item>
-            <POInfo
-              fixedOfferPrice={data.fixedOfferPrice || data.minDesiredOfferPrice}
-              publicOfferingTotalPrice={data.publicOfferingTotalPrice}
-              publicOfferingAmount={data.publicOfferingAmount}
-              subscriptionDepositRate={data.subscriptionDepositRate}
-            />
-          </DetailCard.item>
-          <DetailCard.item>
-            <InvestCompetition ref={investCompetitionBox} investorCompetitionRate={data.investorCompetitionRate} />
-          </DetailCard.item>
-          <DetailCard.item>
-            <IPOConfirm
-              ref={ipoConfirmBox}
-              mandatoryHoldingCommitmentRate={data.mandatoryHoldingCommitmentRate}
-              data={buildMandatoryHoldingCommitmentRate()}
-            />
-            <DetailBottomButton
-              ipoName={data.name}
-              agentIdList={getAgentIdList()}
-              proposal={data.proposal}
-              offerBeginAt={data.offerBeginAt}
-            />
-          </DetailCard.item>
+          <>
+            <DetailCard.item>
+              <POInfo
+                fixedOfferPrice={data.fixedOfferPrice || data.minDesiredOfferPrice}
+                publicOfferingTotalPrice={data.publicOfferingTotalPrice}
+                publicOfferingAmount={data.publicOfferingAmount}
+                subscriptionDepositRate={data.subscriptionDepositRate}
+              />
+            </DetailCard.item>
+            <DetailCard.item>
+              <InvestCompetition ref={investCompetitionBox} investorCompetitionRate={data.investorCompetitionRate} />
+            </DetailCard.item>
+            <DetailCard.item>
+              <IPOConfirm
+                ref={ipoConfirmBox}
+                mandatoryHoldingCommitmentRate={data.mandatoryHoldingCommitmentRate}
+                data={buildMandatoryHoldingCommitmentRate()}
+              />
+              <DetailBottomButton
+                ipoName={data.name}
+                agentIdList={getAgentIdList()}
+                proposal={data.proposal}
+                offerBeginAt={data.offerBeginAt}
+              />
+            </DetailCard.item>
+          </>
         )}
       </DetailCard.wrapper>
     </>
