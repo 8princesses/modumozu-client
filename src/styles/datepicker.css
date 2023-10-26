@@ -4,8 +4,6 @@
 
 .react-datepicker__portal {
   max-width: 375px;
-  left: 50%;
-  translate: -50%;
   background-color: #0000007a;
 }
 
