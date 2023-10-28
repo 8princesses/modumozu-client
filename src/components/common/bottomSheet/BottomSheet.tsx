@@ -20,6 +20,7 @@ export interface BottomSheetProps {
 
 export const BottomSheet: FC<BottomSheetProps> = (props) => {
   const { visible, handleOverlayClick, children } = props;
+
   return (
     <Modal visible={visible} onOutsideClick={handleOverlayClick}>
       <BottomSheetWrapper>
@@ -31,7 +32,6 @@ export const BottomSheet: FC<BottomSheetProps> = (props) => {
 
 const BottomSheetWrapper = styled.div`
   width: 375px;
-  height: 100vh;
 `;
 
 const BottomSheetBox = styled.div`

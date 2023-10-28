@@ -39,9 +39,7 @@ const Modal: FC<ModalProps> = ({ visible, children, onOutsideClick }) => {
     <Portal>
       {visible && (
         <ModalWrapper>
-          <ModalBackground onClick={onOutsideClick}>
-            <ModalContent>{children}</ModalContent>
-          </ModalBackground>
+          <ModalBackground onClick={onOutsideClick}>{children}</ModalBackground>
         </ModalWrapper>
       )}
     </Portal>
@@ -61,10 +59,4 @@ const ModalWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-`;
-const ModalContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
