@@ -107,4 +107,11 @@ export default DetailBottomButton;
 
 const BottomButtonWrap = styled.div`
   padding: 16px 16px 20px 16px;
+  position: fixed;
+  bottom: 0;
+  width: 375px;
+
+  @media (max-width: 375px) {
+    width: 100vw;
+  }
 `;

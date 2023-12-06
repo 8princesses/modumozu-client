@@ -10,6 +10,7 @@ import UpcomingStock from "../UpcomingStock";
 import { limitlessAgent } from "@/constants/agentInfo";
 import { StockInfoType } from "@/types";
 import dayjs from "dayjs";
+import styled from "styled-components";
 
 interface OpenAccountFullProps {
   agentId: number;
@@ -20,7 +21,7 @@ interface OpenAccountFullProps {
 const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const { agentId, handleClose, stockList } = props;
   // const after20BusiDate = getDateAfter20BusinessDays();
-  const after20BusiDate = dayjs().add(20, "day");
+  const after20BusiDate = dayjs().add(26, "day");
   return (
     <FullScreenModal visible={agentId > 0} setInvisible={handleClose}>
       <FullScreenModalDescription>
@@ -54,11 +55,21 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
             />
           </UpcomingStockItem>
         ))}
-      <Button width="100%" $font="BUTTON1_SEMIBOLD" onClick={() => window.open(getStoreUrl(agentId))}>
+      <BottomButton width="100%" $font="BUTTON1_SEMIBOLD" onClick={() => window.open(getStoreUrl(agentId))}>
         계좌 개설
-      </Button>
+      </BottomButton>
     </FullScreenModal>
   );
 };
 
 export default OpenAccountFull;
+
+const BottomButton = styled(Button)`
+  position: fixed;
+  bottom: 20px;
+  width: 345px;
+
+  @media (max-width: 345px) {
+    width: calc(100% - 30px);
+  }
+`;
