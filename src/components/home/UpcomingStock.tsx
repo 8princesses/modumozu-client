@@ -52,7 +52,7 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate 
     return (
       <UpcomingStockStatusWrap>
         <UpcomingStockStatusLabel color={colors.FONT_LIGHT.TERIARY}>D - {diff} </UpcomingStockStatusLabel>
-        <span>{`청약일 ${start.get("month") + 1 + "월 " + start.get("day") + "일"}`}</span>
+        <span>{`청약일 ${start.get("month") + 1 + "월 " + start.get("date") + "일"}`}</span>
       </UpcomingStockStatusWrap>
     );
   }
@@ -61,7 +61,7 @@ const UpcomingStockStatus: FC<UpcomingStockStatusProps> = ({ startDate, endDate 
       <UpcomingStockStatusWrap>
         <Dot />
         <UpcomingStockStatusLabel color={colors.FONT.ACCENT}> 진행 중 </UpcomingStockStatusLabel>
-        <span>{`마감일 ${end.get("month") + 1 + "월 " + end.get("day") + "일"}`}</span>
+        <span>{`마감일 ${end.get("month") + 1 + "월 " + end.get("date") + "일"}`}</span>
       </UpcomingStockStatusWrap>
     );
   }
@@ -105,7 +105,7 @@ const UpcomingStockCard: FC<UpcomingStockCardProps> = (props) => {
                 {getBankName(proposalAgent)?.slice(0, -2) + " "}
               </UpcomingStockSubscriptionDateText>
               <UpcomingStockSubscriptionText>
-                {endDate.get("month") + 1 + "월" + endDate.get("day") + "일까지 개설 필요"}
+                {endDate.get("month") + 1 + "월" + endDate.get("date") + "일까지 개설 필요"}
               </UpcomingStockSubscriptionText>
             </span>
             <Button shape="round" size="small" onClick={onClick}>

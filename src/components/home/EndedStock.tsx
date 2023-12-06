@@ -15,7 +15,7 @@ interface EndStockProps {
 const EndedStock: FC<EndStockProps> = (props) => {
   const { stockName, logoPath, openDate, onClick } = props;
   const today = dayjs();
-  const curDate = dayjs(today.get("year") + "-" + (today.get("month") + 1) + "-" + today.get("day"));
+  const curDate = dayjs(today.get("year") + "-" + (today.get("month") + 1) + "-" + today.get("date"));
   const isPublic = openDate.get("year") === 2000 ? false : curDate > openDate;
 
   return (
@@ -25,7 +25,7 @@ const EndedStock: FC<EndStockProps> = (props) => {
       <Description color={colors.FONT_LIGHT.SECONDARY}>
         {openDate.get("year") === 2000
           ? "상장 예정"
-          : `${openDate.get("month") + 1}월 ${openDate.get("day")}일 상장 ${isPublic ? "완료" : "예정"}`}
+          : `${openDate.get("month") + 1}월 ${openDate.get("date")}일 상장 ${isPublic ? "완료" : "예정"}`}
       </Description>
     </Container>
   );
