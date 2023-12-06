@@ -52,6 +52,7 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
               cardType={data.proposal.cardType}
               proposalAgent={data.proposal.agentId}
               proposalEndDate={data.proposal.needAt}
+              onClick={() => window.open(getStoreUrl(data.proposal.agentId))}
             />
           </UpcomingStockItem>
         ))}
