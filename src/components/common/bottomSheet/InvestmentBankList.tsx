@@ -19,7 +19,7 @@ interface InvestmentBankListProps {
   /**
    * 증권사 버튼 클릭 핸들러
    */
-  handleClick: (id: number) => void;
+  handleClick?: (id: number) => void;
 }
 
 const InvestmentBankList: FC<InvestmentBankListProps> = (props) => {

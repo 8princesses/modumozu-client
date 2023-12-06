@@ -16,7 +16,7 @@ interface InvestmentBankCardListProps {
   /**
    * 증권사 버튼 클릭 핸들러
    */
-  handleClick: (id: number) => void;
+  handleClick?: (id: number) => void;
 }
 
 const InvestmentBankCardList: FC<InvestmentBankCardListProps> = (props) => {
@@ -28,7 +28,9 @@ const InvestmentBankCardList: FC<InvestmentBankCardListProps> = (props) => {
           key={bankId}
           onClick={() => {
             // 20일 제한없는 주간사일경우 바로 스토어로 이동
-            limitlessAgent.includes(bankId) ? window.open(getStoreUrl(bankId)) : handleClick(bankId);
+            limitlessAgent.includes(bankId)
+            ? window.open(getStoreUrl(bankId)) 
+            : handleClick === undefined ? window.open(getStoreUrl(bankId)) : handleClick(bankId);
           }}
         >
           <Image src={getInvestmentBankLogo(bankId)} width="60" height="60" alt={String(bankId)} />
@@ -60,6 +62,7 @@ export const InvestmentBankCard = styled.div<{ $active?: boolean }>`
   border-radius: 16px;
   ${(props) => (props.$active ? getFonts("CAPTION1_SEMIBOLD") : getFonts("CAPTION1_REGULAR"))}
   color:${(props) => (props.$active ? colors.FONT_LIGHT.PRIMARY : colors.FONT_LIGHT.SECONDARY)};
+  cursor: pointer;
 
   svg {
     position: absolute;

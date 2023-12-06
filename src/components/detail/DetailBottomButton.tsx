@@ -89,12 +89,10 @@ const DetailBottomButton: FC<DetailBottomButton> = ({ proposal, offerBeginAt, ag
         isShowingRestrictionBottomSheet={1}
         handleClose={handleRestrictionTipClick}
       />
-
       <OpenAccountBottomSheet
         stockName={bottomSheetType === "open" && ipoName.length > 0 ? ipoName : ""}
         agents={agentIdList}
         handleClose={handleBottomSheetClose}
-        onInvestmentBankClick={() => {}}
       />
       {/* <OpenAccountFull
         agentId={isShowingDisableStocksModal}

@@ -5,7 +5,7 @@ import React, { FC } from "react";
 interface OpenAccountBottomSheetProps {
   stockName: string;
   agents: number[];
-  onInvestmentBankClick: (id: number) => void;
+  onInvestmentBankClick?: (id: number) => void;
   handleClose: () => void;
 }
 
